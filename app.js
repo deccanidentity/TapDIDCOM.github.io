@@ -1,11 +1,12 @@
 /**
- * TapDID India - Digital Identity Platform
- * Client-side Interactive Logic (India & Rupees ₹ Tailored)
+ * TapDID  - Digital Identity Platform
+ * Client-side Interactive Logic ( & Rupees ₹ Tailored)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initHeaderScroll();
+  initMobileNav();
   initCardCustomizer();
   initQrEngine();
   initAiAssistant();
@@ -13,6 +14,30 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initTapSimulator();
 });
+
+/* ==========================================================================
+   Mobile Navigation Toggle
+   ========================================================================== */
+function initMobileNav() {
+  const toggles = document.querySelectorAll('.mobile-nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (!toggles || !navLinks) return;
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+  });
+
+  // Close menu when a nav link is clicked
+  const links = navLinks.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+    });
+  });
+}
 
 /* ==========================================================================
    Theme Switcher (Dark / Light Mode)
@@ -36,16 +61,20 @@ function initThemeToggle() {
 
 function updateThemeIcon(theme) {
   const icon = document.getElementById('themeIcon');
-  const logo = document.getElementById('mainLogo');
-  if (!icon) return;
+  const mainLogo = document.getElementById('mainLogo');
+  const footerLogo = document.getElementById('footerLogo');
 
-  if (theme === 'light') {
-    icon.innerHTML = `<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>`;
-    if (logo) logo.src = 'assets/logo.svg';
-  } else {
-    icon.innerHTML = `<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`;
-    if (logo) logo.src = 'assets/logo-white.svg';
+  if (icon) {
+    if (theme === 'light') {
+      icon.innerHTML = `<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>`;
+    } else {
+      icon.innerHTML = `<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`;
+    }
   }
+
+  const logoSrc = theme === 'dark' ? 'assets/tapdid_h_dark.png' : 'assets/logo_h_nobg.png';
+  if (mainLogo && !mainLogo.src.endsWith(logoSrc)) mainLogo.src = logoSrc;
+  if (footerLogo && !footerLogo.src.endsWith(logoSrc)) footerLogo.src = logoSrc;
 }
 
 /* ==========================================================================
@@ -140,7 +169,7 @@ function initQrEngine() {
     // Draw QR pattern simulation (accurate grid alignment)
     const gridSize = 23;
     const cellSize = size / gridSize;
-    
+
     // Seed hash from input string
     let hash = 0;
     for (let i = 0; i < text.length; i++) {
@@ -207,7 +236,7 @@ function initQrEngine() {
   if (qrDownloadBtn) {
     qrDownloadBtn.addEventListener('click', () => {
       const link = document.createElement('a');
-      link.download = 'TapDID-India-QR.png';
+      link.download = 'TapDID--QR.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
@@ -215,7 +244,7 @@ function initQrEngine() {
 }
 
 /* ==========================================================================
-   AI Assistant Interactive Simulator (India Context)
+   AI Assistant Interactive Simulator ( Context)
    ========================================================================== */
 function initAiAssistant() {
   const sendBtn = document.getElementById('aiSendBtn');
@@ -225,9 +254,9 @@ function initAiAssistant() {
   if (!sendBtn || !aiInput || !chatMessages) return;
 
   const responses = {
-    'summary': 'Namaste! TapDID AI created your bio: "Rohan Sharma is Founder & CEO at Apex Innovations, driving digital transformation in India. Tap to connect on WhatsApp, view portfolio, or pay via UPI."',
-    'analytics': 'TapDID India Cloud Insights: You received 380 card taps across Mumbai, Bengaluru & Delhi events this month. Top channel: WhatsApp direct share (+62%).',
-    'contact': 'TapDID AI automatically generated a VCF contact card, formatted the Indian mobile (+91) format, and prepared a auto-WhatsApp greeting message for your lead!'
+    'summary': 'Namaste! TapDID AI created your bio: "Rohan Sharma is Founder & CEO at Apex Innovations, driving digital transformation in . Tap to connect on WhatsApp, view portfolio, or pay via UPI."',
+    'analytics': 'TapDID  Cloud Insights: You received 380 card taps across Mumbai, Bengaluru & Delhi events this month. Top channel: WhatsApp direct share (+62%).',
+    'contact': 'TapDID AI automatically generated a VCF contact card, formatted the n mobile (+91) format, and prepared a auto-WhatsApp greeting message for your lead!'
   };
 
   sendBtn.addEventListener('click', () => {
@@ -240,7 +269,7 @@ function initAiAssistant() {
 
     // Simulated AI Typing delay
     setTimeout(() => {
-      let reply = 'TapDID AI Assistant is processing your request. All digital profiles, WhatsApp links, and UPI QR codes are synced in real-time across India AWS servers.';
+      let reply = 'TapDID AI Assistant is processing your request. All digital profiles, WhatsApp links, and UPI QR codes are synced in real-time across  AWS servers.';
       const lower = text.toLowerCase();
       if (lower.includes('bio') || lower.includes('summary')) reply = responses['summary'];
       else if (lower.includes('analytic') || lower.includes('tap') || lower.includes('rupee')) reply = responses['analytics'];
@@ -282,8 +311,8 @@ function initRoiCalculator() {
     teamVal.textContent = team;
     cardsVal.textContent = cardsPerUser;
 
-    // Calculations in Indian Rupees (₹)
-    const costPerPaperCardINR = 5.5; // ₹5.50 avg cost per paper card in India
+    // Calculations in n Rupees (₹)
+    const costPerPaperCardINR = 5.5; // ₹5.50 avg cost per paper card in 
     const totalPaperCards = team * cardsPerUser;
     const yearlyPaperCostINR = totalPaperCards * costPerPaperCardINR;
     const tapdidOneTimeCostINR = team * 999; // ₹999 TapDID Pro NFC card
@@ -293,7 +322,7 @@ function initRoiCalculator() {
     const trees = (totalPaperCards / 10000).toFixed(1);
     const boost = Math.round(team * 3.4);
 
-    // Format with Indian Rupee currency (₹)
+    // Format with n Rupee currency (₹)
     savedDollars.textContent = `₹${yearlySavingsINR.toLocaleString('en-IN')}`;
     treesSaved.textContent = `${trees} Trees`;
     leadBoost.textContent = `+${boost}%`;

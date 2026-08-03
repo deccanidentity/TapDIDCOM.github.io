@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Studio & QR Engine — TapDID Identity Platform</title>
+  <meta name="description"
+    content="Customize your 3D NFC visiting card in Matte Metal, 24K Gold, Holo Cyber, or Eco Bamboo with live dynamic QR generation.">
+  <meta name="keywords"
+    content="TapDID Card Studio, NFC Card Customizer, Dynamic QR Generator, UPI QR Code, Smart NFC Visiting Card">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <img id="mainLogo" src="assets/tapdid_h_dark.png" alt="TapDID Logo" class="logo-img">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+          <li><a href="scenarios.html" class="nav-link">Scenarios</a></li>
+          <li><a href="card-studio.html" class="nav-link active">NFC Cards</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
+          <li><a href="demo.html" class="nav-link">Demo</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+          <span id="themeIcon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </span>
+        </button>
+        <a href="#customizer" class="btn btn-primary btn-glow">Order Card (₹999)</a>
+        <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <section class="hero" style="min-height: auto; padding-top: 8.5rem; padding-bottom: 3rem;">
+    <div class="hero-bg-glow"></div>
+    <div class="container text-center" style="text-align: center;">
+      <div class="badge">Card Studio &amp; Dynamic QR</div>
+      <h1 class="section-title" style="font-size: 3rem; margin-top: 0.5rem;">Interactive NFC Card Studio</h1>
+      <p class="section-subtitle" style="max-width: 650px; margin: 0.5rem auto 0;">Customize your encrypted NFC smart
+        card and generate custom dynamic QR codes with live instant preview.</p>
+    </div>
+  </section>
+
+  <!-- Live Card Customizer Section -->
+  <section id="customizer" class="section">
+    <div class="container">
+      <div class="customizer-box">
+        <div class="customizer-grid">
+          <div>
+            <div class="badge">Card Studio</div>
+            <h2 class="section-title" style="text-align: left; font-size: 2.2rem;">Order Your Custom TapDID Card</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Personalize your smart NFC visiting card in n
+              Rupees (₹999 including free delivery across ).</p>
+
+            <div class="form-group">
+              <label for="inputName">Full Name</label>
+              <input type="text" id="inputName" class="form-input" value="Rohan Sharma" placeholder="e.g. Rohan Sharma">
+            </div>
+
+            <div class="form-group">
+              <label for="inputRole">Job Title / Designation</label>
+              <input type="text" id="inputRole" class="form-input" value="Founder & CEO"
+                placeholder="e.g. Founder & CEO / Managing Director">
+            </div>
+
+            <div class="form-group">
+              <label for="inputCompany">Company / Brand Name</label>
+              <input type="text" id="inputCompany" class="form-input" value="Apex Innovations Pvt Ltd"
+                placeholder="e.g. Apex Innovations Pvt Ltd">
+            </div>
+
+            <div class="form-group">
+              <label>Select Premium Finish</label>
+              <div class="material-selector">
+                <button class="material-btn active" data-mat="matte-black">Matte Metal (₹999)</button>
+                <button class="material-btn" data-mat="gold">24K Gold (₹1,999)</button>
+                <button class="material-btn" data-mat="holographic">Holo Cyber (₹1,299)</button>
+                <button class="material-btn" data-mat="eco-bamboo">Eco Bamboo (₹899)</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center;">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Live Card Rendering (n NFC
+              Standard)</p>
+
+            <!-- 3D Interactive Card Showcase -->
+            <div class="card-preview-wrapper" style="margin-bottom: 1.5rem;">
+              <div id="nfcCard3D" class="nfc-card-3d" data-material="matte-black">
+                <!-- Front Face -->
+                <div class="card-face card-face-front">
+                  <div class="card-header-line">
+                    <div class="card-chip"></div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <svg class="nfc-wave-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M8.111 16.404a5.5 5.5 0 010-7.778M12.354 19.192a9.5 9.5 0 000-13.384M16.596 21.979a13.5 13.5 0 000-18.958" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="card-user-details">
+                    <h3 id="cardName">Rohan Sharma</h3>
+                    <p id="cardRole">Founder &amp; CEO</p>
+                    <span id="cardCompany" class="card-company">Apex Innovations Pvt Ltd</span>
+                  </div>
+
+                  <div class="card-footer-line">
+                    <img src="assets/logo_h_nobg.png" alt="TapDID Logo" class="card-brand-logo" style="height: 34px;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">NFC + UPI + QR</span>
+                  </div>
+                </div>
+
+                <!-- Back Face -->
+                <div class="card-face card-face-back">
+                  <div style="background: #fff; padding: 0.75rem; border-radius: 12px;">
+                    <svg width="100" height="100" viewBox="0 0 100 100">
+                      <rect width="100" height="100" fill="#fff" />
+                      <path d="M 10 10 H 35 V 35 H 10 Z M 15 15 V 30 H 30 V 15 Z M 20 20 H 25 V 25 H 20 Z"
+                        fill="#001233" />
+                      <path d="M 65 10 H 90 V 35 H 65 Z M 70 15 V 30 H 85 V 15 Z M 75 20 H 80 V 25 H 75 Z"
+                        fill="#001233" />
+                      <path d="M 10 65 H 35 V 90 H 10 Z M 15 70 V 85 H 30 V 70 Z M 20 75 H 25 V 80 H 20 Z"
+                        fill="#001233" />
+                      <rect x="45" y="45" width="10" height="10" fill="#0052FF" />
+                    </svg>
+                  </div>
+                  <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">Scan QR / GPay / PhonePe
+                    / Tap Phone</p>
+                </div>
+              </div>
+              <p class="card-hint">
+                Click card to flip front &amp; back view
+              </p>
+            </div>
+
+            <div
+              style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 20px; border: 1px dashed var(--border-color);">
+              <p style="color: var(--accent-cyan); font-weight: 600;">Encrypted NFC Chip + Dynamic QR</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Free doorstep express
+                delivery across (Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune &amp; more).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic QR Engine Section -->
+  <section id="qr-engine" class="section">
+    <div class="container">
+      <div class="qr-builder-container">
+        <div class="qr-canvas-card">
+          <canvas id="qrCanvas"></canvas>
+          <button id="downloadQrBtn" class="btn btn-secondary" style="font-size: 0.85rem;">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download HD QR Image
+          </button>
+        </div>
+
+        <div>
+          <div class="badge">Dynamic QR &amp; UPI</div>
+          <h2 class="section-title" style="text-align: left; font-size: 2.2rem;">Live Dynamic QR &amp; UPI Engine</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Generate dynamic QR codes for your digital
+            profile, WhatsApp business chat link, or UPI payment address (Google Pay / PhonePe / Paytm).</p>
+
+          <div class="form-group">
+            <label for="qrDataInput">Profile or UPI Payment Link</label>
+            <input type="text" id="qrDataInput" class="form-input" value="https://tapdid.in/p/rohan-sharma"
+              placeholder="e.g. https://tapdid.in/p/rohan-sharma or upi://pay?pa=rohan@upi">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo-link">
+            <img id="footerLogo" src="assets/tapdid_h_dark.png" alt="TapDID Logo" class="footer-logo-img">
+          </a>
+          <p>TapDID — Digital Identity Platform connecting people, businesses, and assets with NFC, QR, and AI.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="technologies.html">Technologies</a></li>
+            <li><a href="scenarios.html">Scenarios</a></li>
+            <li><a href="card-studio.html">NFC Cards</a></li>
+            <li><a href="pricing.html">Pricing (₹)</a></li>
+            <li><a href="demo.html">Request Demo</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Security &amp; Encryption</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Help &amp; Support: help@tapdid.in</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 TapDID. All rights reserved. by <a href="https://www.deccanidentity.com" target="_blank"
+          rel="noopener noreferrer" style="color: var(--accent-cyan); text-decoration: underline;">DeccanIDentity</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

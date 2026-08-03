@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Enterprise Demo — TapDID Identity Platform</title>
+  <meta name="description"
+    content="Start building identity infrastructure today. Schedule an enterprise demo for multi-site access control, employee ID, and asset tracking.">
+  <meta name="keywords"
+    content="TapDID Demo, Enterprise Identity Demo, Request Demo, Multi-Site Access, Smart ID Infrastructure">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <img id="mainLogo" src="assets/tapdid_h_dark.png" alt="TapDID Logo" class="logo-img">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+          <li><a href="scenarios.html" class="nav-link">Scenarios</a></li>
+          <li><a href="card-studio.html" class="nav-link">NFC Cards</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
+          <li><a href="demo.html" class="nav-link active">Demo</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+          <span id="themeIcon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </span>
+        </button>
+        <a href="card-studio.html" class="btn btn-primary btn-glow">Order Card (₹999)</a>
+        <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Enterprise Demo Banner Section -->
+  <section id="demo" class="hero" style="min-height: 80vh; padding-top: 8.5rem; display: flex; align-items: center;">
+    <div class="hero-bg-glow"></div>
+    <div class="container">
+      <div class="cta-demo-banner" style="margin-top: 0;">
+        <h2>Start building identity infrastructure today.</h2>
+        <p class="cta-subtitle">Join enterprises already running on TapDID.</p>
+
+        <form class="demo-form"
+          onsubmit="event.preventDefault(); alert('Thank you! Your enterprise demo request has been submitted successfully.');">
+          <input type="email" class="demo-input" placeholder="Enter your work email" required />
+          <button type="submit" class="btn btn-primary btn-glow">Request Demo</button>
+        </form>
+
+        <p class="demo-subtext">No credit card required. Enterprise plans available.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo-link">
+            <img id="footerLogo" src="assets/tapdid_h_dark.png" alt="TapDID Logo" class="footer-logo-img">
+          </a>
+          <p>TapDID — Digital Identity Platform connecting people, businesses, and assets with NFC, QR, and AI.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="technologies.html">Technologies</a></li>
+            <li><a href="scenarios.html">Scenarios</a></li>
+            <li><a href="card-studio.html">NFC Cards</a></li>
+            <li><a href="pricing.html">Pricing (₹)</a></li>
+            <li><a href="demo.html">Request Demo</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Security &amp; Encryption</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Help &amp; Support: help@tapdid.in</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 TapDID. All rights reserved. by <a href="https://www.deccanidentity.com" target="_blank"
+          rel="noopener noreferrer" style="color: var(--accent-cyan); text-decoration: underline;">DeccanIDentity</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
