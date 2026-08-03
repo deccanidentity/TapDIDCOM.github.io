@@ -24,17 +24,61 @@ function initMobileNav() {
 
   if (!toggles || !navLinks) return;
 
-  toggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('mobile-open');
+  function closeMenu() {
+    navLinks.classList.remove('mobile-open');
+    toggles.forEach(toggle => {
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = '☰';
     });
+  }
+
+  function openMenu() {
+    navLinks.classList.add('mobile-open');
+    toggles.forEach(toggle => {
+      toggle.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.innerHTML = '✕';
+    });
+  }
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navLinks.classList.contains('mobile-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('mobile-open') && !navLinks.contains(e.target)) {
+      let isToggleClick = false;
+      toggles.forEach(t => {
+        if (t.contains(e.target)) isToggleClick = true;
+      });
+      if (!isToggleClick) {
+        closeMenu();
+      }
+    }
+  });
+
+  // Close menu on Escape keypress
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+      closeMenu();
+    }
   });
 
   // Close menu when a nav link is clicked
   const links = navLinks.querySelectorAll('a');
   links.forEach(link => {
     link.addEventListener('click', () => {
-      navLinks.classList.remove('mobile-open');
+      closeMenu();
     });
   });
 }
