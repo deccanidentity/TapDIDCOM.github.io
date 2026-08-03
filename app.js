@@ -46,7 +46,7 @@ function initThemeToggle() {
   const themeBtn = document.getElementById('themeToggle');
   if (!themeBtn) return;
 
-  const savedTheme = localStorage.getItem('tapdid_theme') || 'dark';
+  const savedTheme = localStorage.getItem('tapdid_theme') || 'light';
   document.documentElement.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
 

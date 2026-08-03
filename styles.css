@@ -479,6 +479,12 @@ h6 {
 }
 
 /* Card Themes */
+.nfc-card-3d[data-material="classic-pvc"] .card-face {
+  background: linear-gradient(135deg, #0f2b5c 0%, #061533 100%);
+  border-color: rgba(0, 82, 255, 0.4);
+  color: #ffffff;
+}
+
 .nfc-card-3d[data-material="matte-black"] .card-face {
   background: linear-gradient(135deg, #141c2e 0%, #080d1a 100%);
   color: #ffffff;
