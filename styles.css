@@ -84,6 +84,20 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Disable transitions on initial page load to eliminate page shading & blinking */
+html.preload *,
+html.preload *::before,
+html.preload *::after {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }
 
 body {
@@ -293,6 +307,16 @@ h6 {
   transition: transform var(--transition-fast), filter var(--transition-fast);
 }
 
+[data-theme="dark"] #mainLogo,
+[data-theme="dark"] #footerLogo {
+  content: url('assets/tapdid_h_dark.png');
+}
+
+[data-theme="light"] #mainLogo,
+[data-theme="light"] #footerLogo {
+  content: url('assets/logo_h_nobg.png');
+}
+
 [data-theme="light"] .logo-img {
   filter: drop-shadow(0 2px 6px rgba(0, 18, 51, 0.18));
 }
@@ -459,7 +483,7 @@ h6 {
 }
 
 .metric-label {
-  font-size: 0.84rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-muted);
 }
@@ -597,12 +621,16 @@ h6 {
 }
 
 .card-brand-logo {
-  height: 26px;
+  height: 34px;
+  max-height: 36px;
+  width: auto;
+  content: url('assets/tapdid_h_dark.png') !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)) brightness(1.1) !important;
 }
 
 .card-hint {
   margin-top: 1rem;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-muted);
   display: flex;
@@ -1026,7 +1054,7 @@ h6 {
 }
 
 .demo-subtext {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -1106,25 +1134,25 @@ h6 {
 }
 
 .material-selector {
-  display: flex;
-  gap: 0.65rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
   margin-top: 0.4rem;
-  flex-wrap: wrap;
 }
 
 .material-btn {
-  flex: 1;
-  min-width: 100px;
-  padding: 0.55rem;
+  width: 100%;
+  padding: 0.65rem 0.25rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   background: var(--bg-secondary);
   color: var(--text-main);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transition-fast);
   text-align: center;
+  white-space: nowrap;
 }
 
 .material-btn.active,
@@ -1332,15 +1360,16 @@ h6 {
 /* Pricing Grid */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
 }
 
 .pricing-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 2.25rem;
+  padding: 1.85rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1349,31 +1378,37 @@ h6 {
   box-shadow: var(--shadow-sm);
 }
 
+.pricing-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .pricing-card.featured {
   border-color: var(--accent-cyan);
   box-shadow: var(--shadow-glow);
-  transform: scale(1.02);
+  transform: translateY(-4px);
 }
 
 .popular-badge {
   position: absolute;
-  top: -15px;
-  right: 22px;
+  top: -14px;
+  right: 16px;
   background: var(--accent-gradient);
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  padding: 0.3rem 1rem;
+  padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0, 82, 255, 0.35);
 }
 
 .pricing-price {
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   font-family: var(--font-heading);
   font-weight: 900;
-  margin: 0.85rem 0;
+  margin: 0.75rem 0;
   color: var(--text-main);
 }
 
@@ -1388,10 +1423,11 @@ h6 {
 .pricing-features li {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.92rem;
+  gap: 0.65rem;
+  font-size: 0.94rem;
   font-weight: 500;
   color: var(--text-muted);
+  line-height: 1.35;
 }
 
 .pricing-features li svg {
@@ -1630,6 +1666,10 @@ h6 {
     font-size: 0.95rem;
   }
 
+  .material-selector {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+
   .hero-grid,
   .customizer-grid,
   .qr-builder-container {
@@ -1653,13 +1693,68 @@ h6 {
   }
 }
 
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 640px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .features-5-row {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
+  /* Mobile Typography & Readability Fixes */
+  body {
+    font-size: 1rem;
+  }
+
+  p,
+  .section-subtitle,
+  .hero-content p,
+  .footer-brand p {
+    font-size: 1rem !important;
+    line-height: 1.6;
+  }
+
+  .badge {
+    font-size: 0.88rem;
+    padding: 0.45rem 1.1rem;
+  }
+
+  .metric-label {
+    font-size: 0.92rem;
+  }
+
+  .metric-value {
+    font-size: 1.65rem;
+  }
+
+  .pricing-features li {
+    font-size: 0.96rem;
+    line-height: 1.4;
+  }
+
+  .nav-link {
+    font-size: 1.05rem;
+  }
+
+  .footer-links a {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+  }
+
   .section-title {
     font-size: 1.85rem;
   }

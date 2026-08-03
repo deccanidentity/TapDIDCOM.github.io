@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('tapdid_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing & ROI Savings Calculator — TapDID Identity Platform</title>
@@ -32,7 +38,7 @@
           <li><a href="pricing.html" class="nav-link active">Pricing (₹)</a></li>
           <li><a href="demo.html" class="nav-link">Demo</a></li>
           <li class="mobile-cta-item">
-            <a href="card-studio.html" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹999)</a>
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹300)</a>
           </li>
         </ul>
       </nav>
@@ -46,7 +52,7 @@
             </svg>
           </span>
         </button>
-        <a href="card-studio.html" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹999)</a>
+        <a href="card-studio.html#customizer" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹300)</a>
         <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
       </div>
     </div>
@@ -58,8 +64,7 @@
     <div class="container text-center" style="text-align: center;">
       <div class="badge">Transparent Pricing (INR)</div>
       <h1 class="section-title" style="font-size: 3rem; margin-top: 0.5rem;">Pricing Plans &amp; Savings</h1>
-      <p class="section-subtitle" style="max-width: 650px; margin: 0.5rem auto 0;">One-time smart card purchase, no
-        mandatory recurring charges for individuals. GST Invoice available.</p>
+      <p class="section-subtitle" style="max-width: 650px; margin: 0.5rem auto 0;">One-time smart card purchase starting at ₹300, no mandatory recurring charges. GST Invoice available.</p>
     </div>
   </section>
 
@@ -70,7 +75,7 @@
         <div class="pricing-card">
           <div>
             <h3>Free Digital Profile</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">For freelancers &amp; individuals</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">For freelancers &amp; individuals</p>
             <div class="pricing-price">₹0</div>
             <ul class="pricing-features">
               <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,14 +89,15 @@
                 </svg> Standard Contact Save (VCF)</li>
             </ul>
           </div>
-          <a href="card-studio.html" class="btn btn-secondary">Get Free Profile Link</a>
+          <a href="card-studio.html#customizer" class="btn btn-secondary">Get Free Profile Link</a>
         </div>
 
         <!-- Classic Smart Card Tier (₹300) -->
-        <div class="pricing-card">
+        <div class="pricing-card featured">
+          <div class="popular-badge">Most Popular</div>
           <div>
             <h3>Classic NFC Card</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Essential Smart PVC NFC Visiting Card</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Essential Smart PVC NFC Visiting Card</p>
             <div class="pricing-price">₹300 <span
                 style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">one-time</span></div>
             <ul class="pricing-features">
@@ -109,14 +115,13 @@
                 </svg> Free Express Doorstep Shipping</li>
             </ul>
           </div>
-          <a href="card-studio.html" class="btn btn-secondary">Order Classic Card (₹300)</a>
+          <a href="card-studio.html#customizer" class="btn btn-primary btn-glow">Order Classic Card (₹300)</a>
         </div>
 
-        <div class="pricing-card featured">
-          <div class="popular-badge">Best Seller</div>
+        <div class="pricing-card">
           <div>
             <h3>TapDID Pro Smart Card</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Custom NFC Card + Lifetime Cloud</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Custom NFC Card + Lifetime Cloud</p>
             <div class="pricing-price">₹999 <span
                 style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">one-time</span></div>
             <ul class="pricing-features">
@@ -134,13 +139,13 @@
                 </svg> Free Express Doorstep Delivery</li>
             </ul>
           </div>
-          <a href="card-studio.html" class="btn btn-primary btn-glow">Order Pro Card (₹999)</a>
+          <a href="card-studio.html#customizer" class="btn btn-secondary">Order Pro Card (₹999)</a>
         </div>
 
         <div class="pricing-card">
           <div>
             <h3>Corporate Enterprise</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Teams, Sales &amp; Asset Management</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Teams, Sales &amp; Asset Management</p>
             <div class="pricing-price">₹3,333 <span
                 style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">/ month</span></div>
             <ul class="pricing-features">
@@ -158,7 +163,7 @@
                 </svg> Zoho / Hubspot / Salesforce Integration</li>
             </ul>
           </div>
-          <a href="demo.html" class="btn btn-secondary">Get Enterprise Quote</a>
+          <a href="https://wa.me/918186035869?text=Hi%20TapDID%20Team,%20I'm%20interested%20in%20the%20Corporate%20Enterprise%20Plan." target="_blank" class="btn btn-secondary">Contact Enterprise Sales (+91 8186 035869)</a>
         </div>
       </div>
     </div>
@@ -217,7 +222,8 @@
           <a href="index.html" class="footer-logo-link">
             <img id="footerLogo" src="assets/logo_h_nobg.png" alt="TapDID Logo" class="footer-logo-img">
           </a>
-          <p>TapDID — Digital Identity Platform connecting people, businesses, and assets with NFC, QR, and AI.</p>
+          <p>TapDID — The Digital Identity Platform connecting people, businesses, and assets through NFC (Near Field
+            Communication), QR codes, AI, and secure cloud services.</p>
         </div>
         <div class="footer-column">
           <h4>Pages</h4>

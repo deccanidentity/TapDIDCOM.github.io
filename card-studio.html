@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('tapdid_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Card Studio & QR Engine — TapDID Identity Platform</title>
@@ -32,7 +38,7 @@
           <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
           <li><a href="demo.html" class="nav-link">Demo</a></li>
           <li class="mobile-cta-item">
-            <a href="#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹999)</a>
+            <a href="#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹300)</a>
           </li>
         </ul>
       </nav>
@@ -46,7 +52,7 @@
             </svg>
           </span>
         </button>
-        <a href="#customizer" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹999)</a>
+        <a href="#customizer" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹300)</a>
         <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
       </div>
     </div>
@@ -69,13 +75,12 @@
       <div class="customizer-box">
         <div class="customizer-grid">
           <div>
-            <div class="badge">Card Studio</div>
+            <div class="badge">NFC Card Studio</div>
             <h2 class="section-title" style="text-align: left; font-size: 2.2rem;">Order Your Custom TapDID Card</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Personalize your smart NFC visiting card in n
-              Rupees (₹999 including free delivery across ).</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Personalize your smart NFC visiting card starting from ₹300 (including free doorstep express delivery across India).</p>
 
             <div class="form-group">
-              <label for="inputName">Full Name</label>
+              <label for="inputName">Full Name (Card Print)</label>
               <input type="text" id="inputName" class="form-input" value="Rohan Sharma" placeholder="e.g. Rohan Sharma">
             </div>
 
@@ -92,20 +97,43 @@
             </div>
 
             <div class="form-group">
+              <label for="inputEmail">Email Address (for Digital Profile Link &amp; Invoice)</label>
+              <input type="email" id="inputEmail" class="form-input" placeholder="e.g. rohan@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="inputPhone">Phone / WhatsApp Number (for Proof &amp; Tracking)</label>
+              <input type="tel" id="inputPhone" class="form-input" placeholder="e.g. +91 98765 43210">
+            </div>
+
+            <div class="form-group">
+              <label for="inputAddress">Delivery Shipping Address</label>
+              <input type="text" id="inputAddress" class="form-input" placeholder="e.g. Flat 402, Green Towers, HSR Layout, Bengaluru">
+            </div>
+
+            <div class="form-group">
               <label>Select Premium Finish</label>
               <div class="material-selector">
-                <button class="material-btn" data-mat="classic-pvc">Classic PVC (₹300)</button>
-                <button class="material-btn active" data-mat="matte-black">Matte Metal (₹999)</button>
+                <button class="material-btn active" data-mat="classic-pvc">Classic PVC (₹300)</button>
+                <button class="material-btn" data-mat="matte-black">Matte Metal (₹999)</button>
                 <button class="material-btn" data-mat="gold">24K Gold (₹1,999)</button>
                 <button class="material-btn" data-mat="holographic">Holo Cyber (₹1,299)</button>
                 <button class="material-btn" data-mat="eco-bamboo">Eco Bamboo (₹899)</button>
               </div>
             </div>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem;">
+              <button id="submitCardOrderBtn" class="btn btn-primary btn-glow" style="flex: 1; min-width: 200px;">
+                Submit Card Order Details (₹300)
+              </button>
+              <a href="https://wa.me/918186035869?text=Hi%20TapDID%20Team,%20I%20would%20like%20to%20order%20a%20Custom%20NFC%20Smart%20Card." target="_blank" class="btn btn-secondary" style="flex: 1; min-width: 220px;">
+                Reach out via WhatsApp (+91 8186 035869)
+              </a>
+            </div>
           </div>
 
           <div style="text-align: center;">
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Live Card Rendering (n NFC
-              Standard)</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Live Card Rendering (TapDID NFC Standard)</p>
 
             <!-- 3D Interactive Card Showcase -->
             <div class="card-preview-wrapper" style="margin-bottom: 1.5rem;">
@@ -129,8 +157,8 @@
                   </div>
 
                   <div class="card-footer-line">
-                    <img src="assets/logo_h_nobg.png" alt="TapDID Logo" class="card-brand-logo" style="height: 34px;">
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">NFC + UPI + QR</span>
+                    <img src="assets/tapdid_h_dark.png" alt="TapDID Logo" class="card-brand-logo" style="height: 34px;">
+                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">NFC + UPI + QR</span>
                   </div>
                 </div>
 
@@ -148,7 +176,8 @@
                       <rect x="45" y="45" width="10" height="10" fill="#0052FF" />
                     </svg>
                   </div>
-                  <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">Scan QR / GPay / PhonePe
+                  <p style="margin-top: 0.75rem; font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">Scan
+                    QR / GPay / PhonePe
                     / Tap Phone</p>
                 </div>
               </div>
@@ -160,7 +189,7 @@
             <div
               style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 20px; border: 1px dashed var(--border-color);">
               <p style="color: var(--accent-cyan); font-weight: 600;">Encrypted NFC Chip + Dynamic QR</p>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Free doorstep express
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">Free doorstep express
                 delivery across (Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune &amp; more).</p>
             </div>
           </div>
@@ -175,7 +204,7 @@
       <div class="qr-builder-container">
         <div class="qr-canvas-card">
           <canvas id="qrCanvas"></canvas>
-          <button id="downloadQrBtn" class="btn btn-secondary" style="font-size: 0.85rem;">
+          <button id="downloadQrBtn" class="btn btn-secondary">
             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -208,7 +237,8 @@
           <a href="index.html" class="footer-logo-link">
             <img id="footerLogo" src="assets/logo_h_nobg.png" alt="TapDID Logo" class="footer-logo-img">
           </a>
-          <p>TapDID — Digital Identity Platform connecting people, businesses, and assets with NFC, QR, and AI.</p>
+          <p>TapDID — The Digital Identity Platform connecting people, businesses, and assets through NFC (Near Field
+            Communication), QR codes, AI, and secure cloud services.</p>
         </div>
         <div class="footer-column">
           <h4>Pages</h4>

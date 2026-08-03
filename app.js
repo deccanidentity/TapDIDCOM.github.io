@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initTapSimulator();
 });
 
+// Remove preload class after page load to enable smooth transitions without load flickering
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.documentElement.classList.remove('preload');
+  }, 50);
+});
+
 /* ==========================================================================
    Mobile Navigation Toggle
    ========================================================================== */
@@ -88,15 +95,15 @@ function initMobileNav() {
    ========================================================================== */
 function initThemeToggle() {
   const themeBtn = document.getElementById('themeToggle');
+  const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('tapdid_theme') || 'dark';
+  
+  updateThemeIcon(currentTheme);
+
   if (!themeBtn) return;
 
-  const savedTheme = localStorage.getItem('tapdid_theme') || 'light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-
   themeBtn.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('tapdid_theme', newTheme);
     updateThemeIcon(newTheme);
@@ -177,6 +184,18 @@ function initCardCustomizer() {
     });
   }
 
+  const submitBtn = document.getElementById('submitCardOrderBtn');
+
+  function updateSubmitPrice() {
+    if (!submitBtn) return;
+    const activeBtn = document.querySelector('.material-btn.active');
+    if (activeBtn) {
+      const match = activeBtn.textContent.match(/₹[\d,]+/);
+      const price = match ? match[0] : '₹300';
+      submitBtn.textContent = `Submit Card Order Details (${price})`;
+    }
+  }
+
   // Material Switcher
   materialBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -185,8 +204,35 @@ function initCardCustomizer() {
       btn.classList.add('active');
       const mat = btn.getAttribute('data-mat');
       card3d.setAttribute('data-material', mat);
+      updateSubmitPrice();
     });
   });
+
+  updateSubmitPrice();
+
+  // Submit Card Order Button Handler
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      const name = nameInput ? nameInput.value.trim() : '';
+      const role = roleInput ? roleInput.value.trim() : '';
+      const company = companyInput ? companyInput.value.trim() : '';
+      const emailInput = document.getElementById('inputEmail');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const phoneInput = document.getElementById('inputPhone');
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+
+      if (!name) {
+        alert('Please enter your full name for the card print.');
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      const selectedMatBtn = document.querySelector('.material-btn.active');
+      const finishText = selectedMatBtn ? selectedMatBtn.textContent : 'Classic PVC (₹300)';
+
+      alert(`✅ Thank you, ${name}!\n\nYour order details for "${finishText}" have been captured successfully.\n\nSummary:\n• Name: ${name}\n• Designation: ${role}\n• Company: ${company}\n• Email: ${email || 'N/A'}\n• Phone: ${phone || 'N/A'}\n\nOur team will contact you via WhatsApp (+91 8186 035869) or email with your digital card proof & tracking details.`);
+    });
+  }
 }
 
 /* ==========================================================================

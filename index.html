@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('tapdid_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TapDID — Digital Identity & Smart NFC Platform</title>
@@ -50,7 +56,7 @@
           <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
           <li><a href="demo.html" class="nav-link">Demo</a></li>
           <li class="mobile-cta-item">
-            <a href="card-studio.html" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹999)</a>
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹300)</a>
           </li>
         </ul>
       </nav>
@@ -64,7 +70,7 @@
             </svg>
           </span>
         </button>
-        <a href="card-studio.html" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹999)</a>
+        <a href="card-studio.html#customizer" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹300)</a>
         <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
       </div>
     </div>
@@ -80,11 +86,13 @@
           INDIA #1 Digital Identity Platform
         </div>
         <h1>Your Digital Identity. <span class="text-gradient">One Tap Away.</span></h1>
-        <p>TapDID connects professionals, enterprises, and startups seamlessly using NFC, Dynamic QR, AI,
-          WhatsApp, and cloud technology. Share contacts, portfolios, UPI payments, and catalogues in a single tap.</p>
+        <p>TapDID is an AI-powered Digital Identity Platform that empowers professionals, businesses, and startups to
+          connect, share, and grow through NFC (Near Field Communication), Dynamic QR, WhatsApp, and secure cloud
+          services. Instantly share contacts, digital profiles, portfolios, UPI payment details, websites, social media,
+          and product catalogues—all with a single tap.</p>
 
         <div class="hero-cta-group">
-          <a href="card-studio.html" class="btn btn-primary btn-glow">Customize Card (₹999)</a>
+          <a href="card-studio.html#customizer" class="btn btn-primary btn-glow">Customize Card (₹300)</a>
           <button id="simulateTapBtn" class="btn btn-secondary">
             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -133,8 +141,8 @@
             </div>
 
             <div class="card-footer-line">
-              <img src="assets/logo_h_nobg.png" alt="TapDID Logo" class="card-brand-logo" style="height: 34px;">
-              <span style="font-size: 0.75rem; color: var(--text-muted);">NFC + UPI + QR</span>
+              <img src="assets/tapdid_h_dark.png" alt="TapDID Logo" class="card-brand-logo" style="height: 34px;">
+              <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">NFC + UPI + QR</span>
             </div>
           </div>
 
@@ -149,7 +157,8 @@
                 <rect x="45" y="45" width="10" height="10" fill="#0052FF" />
               </svg>
             </div>
-            <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">Scan QR / GPay / PhonePe / Tap
+            <p style="margin-top: 0.75rem; font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">Scan QR /
+              GPay / PhonePe / Tap
               Phone</p>
           </div>
 
@@ -365,7 +374,8 @@
           <a href="index.html" class="footer-logo-link">
             <img id="footerLogo" src="assets/logo_h_nobg.png" alt="TapDID Logo" class="footer-logo-img">
           </a>
-          <p>TapDID — Digital Identity Platform connecting people, businesses, and assets with NFC, QR, and AI.</p>
+          <p>TapDID — The Digital Identity Platform connecting people, businesses, and assets through NFC (Near Field
+            Communication), QR codes, AI, and secure cloud services.</p>
         </div>
 
         <div class="footer-column">

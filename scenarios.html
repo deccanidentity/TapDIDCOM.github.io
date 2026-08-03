@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('tapdid_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identity Scenarios — TapDID Identity Platform</title>
@@ -32,7 +38,7 @@
           <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
           <li><a href="demo.html" class="nav-link">Demo</a></li>
           <li class="mobile-cta-item">
-            <a href="card-studio.html" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹999)</a>
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹300)</a>
           </li>
         </ul>
       </nav>
@@ -46,7 +52,7 @@
             </svg>
           </span>
         </button>
-        <a href="card-studio.html" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹999)</a>
+        <a href="card-studio.html#customizer" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹300)</a>
         <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
       </div>
     </div>
@@ -195,7 +201,8 @@
           <a href="index.html" class="footer-logo-link">
             <img id="footerLogo" src="assets/logo_h_nobg.png" alt="TapDID Logo" class="footer-logo-img">
           </a>
-          <p>TapDID — Digital Identity Platform connecting people, businesses, and assets with NFC, QR, and AI.</p>
+          <p>TapDID — The Digital Identity Platform connecting people, businesses, and assets through NFC (Near Field
+            Communication), QR codes, AI, and secure cloud services.</p>
         </div>
         <div class="footer-column">
           <h4>Pages</h4>
