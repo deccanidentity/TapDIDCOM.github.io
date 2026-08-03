@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TapDID India — Digital Identity & Smart NFC Cards (₹ INR)</title>
+  <meta name="description"
+    content="TapDID is India's leading Digital Identity Platform. Connect people, businesses, and assets with a single tap using NFC, Dynamic QR, AI, WhatsApp, and Cloud technology.">
+  <meta name="keywords"
+    content="TapDID, TapDID India, NFC Business Card India, Digital Visiting Card India, Dynamic QR Code, WhatsApp Profile, UPI Payment QR, Smart Visiting Card Rupees">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TapDID India — Digital Identity Platform (₹ INR)">
+  <meta property="og:description"
+    content="India's leading NFC Smart Card & Digital Identity Platform. Share contacts, WhatsApp, and UPI with a single tap.">
+  <meta property="og:url" content="https://tapdidcom.github.io/">
+  <meta property="og:image" content="assets/logo.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Glassmorphic Header Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo-link">
+        <img id="mainLogo" src="assets/logo-white.svg" alt="TapDID India Logo" class="logo-img" style="height: 42px; width: auto;">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#customizer" class="nav-link">NFC Cards</a></li>
+          <li><a href="#qr-engine" class="nav-link">Dynamic QR &amp; UPI</a></li>
+          <li><a href="#ai-assistant" class="nav-link">AI Bio Engine</a></li>
+          <li><a href="#roi" class="nav-link">ROI Calculator (₹)</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing (₹)</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+          <span id="themeIcon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </span>
+        </button>
+        <a href="#customizer" class="btn btn-primary btn-glow">Order Card (₹999)</a>
+        <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-grid">
+
+      <div class="hero-content">
+        <div class="badge">
+          <span style="font-size: 1.1rem; margin-right: 0.3rem;">🇮🇳</span> India's #1 Digital Identity Platform
+        </div>
+        <h1>Your Digital Identity. <span class="text-gradient">One Tap Away.</span></h1>
+        <p>TapDID connects Indian professionals, enterprises, and startups seamlessly using NFC, Dynamic QR, AI,
+          WhatsApp, and cloud technology. Share contacts, portfolios, UPI payments, and catalogues in a single tap.</p>
+
+        <div class="hero-cta-group">
+          <a href="#customizer" class="btn btn-primary btn-glow">Customize Card (₹999)</a>
+          <button id="simulateTapBtn" class="btn btn-secondary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            Simulate Phone Tap
+          </button>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <span class="metric-value">15 Lakh+</span>
+            <span class="metric-label">Digital Taps in India</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">₹4.5Cr+</span>
+            <span class="metric-label">Paper Card Costs Saved</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">3.5x</span>
+            <span class="metric-label">More WhatsApp Leads</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Interactive Card Showcase -->
+      <div class="card-preview-wrapper">
+        <div id="nfcCard3D" class="nfc-card-3d" data-material="matte-black">
+
+          <!-- Front Face -->
+          <div class="card-face card-face-front">
+            <div class="card-header-line">
+              <div class="card-chip"></div>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span
+                  style="font-size: 0.75rem; font-weight: 700; color: var(--accent-mint); background: rgba(0,245,160,0.15); padding: 0.2rem 0.5rem; border-radius: 4px;">🇮🇳
+                  INDIA</span>
+                <svg class="nfc-wave-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8.111 16.404a5.5 5.5 0 010-7.778M12.354 19.192a9.5 9.5 0 000-13.384M16.596 21.979a13.5 13.5 0 000-18.958" />
+                </svg>
+              </div>
+            </div>
+
+            <div class="card-user-details">
+              <h3 id="cardName">Rohan Sharma</h3>
+              <p id="cardRole">Founder &amp; CEO</p>
+              <span id="cardCompany" class="card-company">Apex Innovations Pvt Ltd</span>
+            </div>
+
+            <div class="card-footer-line">
+              <img src="assets/logo-white.svg" alt="TapDID Logo" class="card-brand-logo" style="height: 34px;">
+              <span style="font-size: 0.75rem; color: var(--text-muted);">NFC + UPI + QR</span>
+            </div>
+          </div>
+
+          <!-- Back Face -->
+          <div class="card-face card-face-back">
+            <div style="background: #fff; padding: 0.75rem; border-radius: 12px;">
+              <svg width="100" height="100" viewBox="0 0 100 100">
+                <rect width="100" height="100" fill="#fff" />
+                <path d="M 10 10 H 35 V 35 H 10 Z M 15 15 V 30 H 30 V 15 Z M 20 20 H 25 V 25 H 20 Z" fill="#001233" />
+                <path d="M 65 10 H 90 V 35 H 65 Z M 70 15 V 30 H 85 V 15 Z M 75 20 H 80 V 25 H 75 Z" fill="#001233" />
+                <path d="M 10 65 H 35 V 90 H 10 Z M 15 70 V 85 H 30 V 70 Z M 20 75 H 25 V 80 H 20 Z" fill="#001233" />
+                <rect x="45" y="45" width="10" height="10" fill="#0052FF" />
+              </svg>
+            </div>
+            <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">Scan QR / GPay / PhonePe / Tap
+              Phone</p>
+          </div>
+
+        </div>
+        <p class="card-hint">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          </svg>
+          Click card to flip front &amp; back view
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Ecosystem Architecture</div>
+        <h2 class="section-title">— FEATURES ICONS —</h2>
+        <p class="section-subtitle">Everything you need to connect people, businesses, and assets with a single tap.</p>
+      </div>
+
+      <div class="features-5-row">
+        
+        <!-- Feature 1: NFC CARDS -->
+        <div class="feature-pillar-card">
+          <div class="feature-vector-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <circle cx="12" cy="38" r="3.5" fill="currentColor"/>
+              <path d="M 22 24 A 18 18 0 0 1 22 52" stroke-width="4.5"/>
+              <path d="M 34 16 A 28 28 0 0 1 34 60" stroke-width="4.5"/>
+              <path d="M 46 8 A 38 38 0 0 1 46 64" stroke-width="4.5"/>
+            </svg>
+          </div>
+          <h3>NFC CARDS</h3>
+          <p>Tap and connect instantly with smart NFC cards.</p>
+        </div>
+
+        <!-- Feature 2: DIGITAL PROFILES -->
+        <div class="feature-pillar-card">
+          <div class="feature-vector-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <circle cx="32" cy="22" r="12"/>
+              <path d="M 12 54 C 12 40 20 36 32 36 C 44 36 52 40 52 54"/>
+            </svg>
+          </div>
+          <h3>DIGITAL PROFILES</h3>
+          <p>Create and share your verified digital identity.</p>
+        </div>
+
+        <!-- Feature 3: ANALYTICS -->
+        <div class="feature-pillar-card">
+          <div class="feature-vector-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <line x1="8" y1="54" x2="56" y2="54"/>
+              <rect x="12" y="34" width="7" height="20" rx="1.5"/>
+              <rect x="25" y="22" width="7" height="32" rx="1.5"/>
+              <rect x="38" y="10" width="7" height="44" rx="1.5"/>
+            </svg>
+          </div>
+          <h3>ANALYTICS</h3>
+          <p>Gain insights and track your digital interactions.</p>
+        </div>
+
+        <!-- Feature 4: SECURE -->
+        <div class="feature-pillar-card">
+          <div class="feature-vector-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <path d="M 32 8 L 50 16 L 50 30 C 50 44 32 54 32 54 C 32 54 14 44 14 30 L 14 16 Z"/>
+              <path d="M 24 30 L 29 35 L 39 23" stroke-width="4.5"/>
+            </svg>
+          </div>
+          <h3>SECURE</h3>
+          <p>Your data is protected with advanced security.</p>
+        </div>
+
+        <!-- Feature 5: QR CODE -->
+        <div class="feature-pillar-card">
+          <div class="feature-vector-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <path d="M 16 8 H 8 V 16"/>
+              <path d="M 48 8 H 56 V 16"/>
+              <path d="M 8 48 V 56 H 16"/>
+              <path d="M 56 48 V 56 H 48"/>
+              <rect x="18" y="18" width="10" height="10" rx="2" fill="currentColor"/>
+              <rect x="36" y="18" width="10" height="10" rx="2" fill="currentColor"/>
+              <rect x="18" y="36" width="10" height="10" rx="2" fill="currentColor"/>
+              <rect x="34" y="34" width="6" height="6" fill="currentColor"/>
+              <rect x="42" y="42" width="6" height="6" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>QR CODE</h3>
+          <p>Scan, verify and connect with unique QR codes.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Card Customizer Section -->
+  <section id="customizer" class="section">
+    <div class="container">
+      <div class="customizer-box">
+        <div class="customizer-grid">
+          <div>
+            <div class="badge">Card Studio</div>
+            <h2 class="section-title" style="text-align: left; font-size: 2.2rem;">Order Your Custom TapDID Card</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Personalize your smart NFC visiting card in Indian
+              Rupees (₹999 including free delivery across India).</p>
+
+            <div class="form-group">
+              <label for="inputName">Full Name</label>
+              <input type="text" id="inputName" class="form-input" value="Rohan Sharma" placeholder="e.g. Rohan Sharma">
+            </div>
+
+            <div class="form-group">
+              <label for="inputRole">Job Title / Designation</label>
+              <input type="text" id="inputRole" class="form-input" value="Founder & CEO"
+                placeholder="e.g. Founder & CEO / Managing Director">
+            </div>
+
+            <div class="form-group">
+              <label for="inputCompany">Company / Brand Name</label>
+              <input type="text" id="inputCompany" class="form-input" value="Apex Innovations Pvt Ltd"
+                placeholder="e.g. Apex Innovations Pvt Ltd">
+            </div>
+
+            <div class="form-group">
+              <label>Select Premium Finish</label>
+              <div class="material-selector">
+                <button class="material-btn active" data-mat="matte-black">Matte Metal (₹999)</button>
+                <button class="material-btn" data-mat="gold">24K Gold (₹1,999)</button>
+                <button class="material-btn" data-mat="holographic">Holo Cyber (₹1,299)</button>
+                <button class="material-btn" data-mat="eco-bamboo">Eco Bamboo (₹899)</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center;">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Live Card Rendering (Indian NFC
+              Standard)</p>
+            <div
+              style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 20px; border: 1px dashed var(--border-color);">
+              <p style="color: var(--accent-cyan); font-weight: 600;">Encrypted NFC Chip + Dynamic QR</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Free doorstep express
+                delivery across India (Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune &amp; more).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic QR Engine Section -->
+  <section id="qr-engine" class="section">
+    <div class="container">
+      <div class="qr-builder-container">
+        <div class="qr-canvas-card">
+          <canvas id="qrCanvas"></canvas>
+          <button id="downloadQrBtn" class="btn btn-secondary" style="font-size: 0.85rem;">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download HD QR Image
+          </button>
+        </div>
+
+        <div>
+          <div class="badge">Dynamic QR &amp; UPI</div>
+          <h2 class="section-title" style="text-align: left; font-size: 2.2rem;">Live Dynamic QR &amp; UPI Engine</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Generate dynamic QR codes for your digital
+            profile, WhatsApp business chat link, or UPI payment address (Google Pay / PhonePe / Paytm).</p>
+
+          <div class="form-group">
+            <label for="qrDataInput">Profile or UPI Payment Link</label>
+            <input type="text" id="qrDataInput" class="form-input" value="https://tapdid.in/p/rohan-sharma"
+              placeholder="e.g. https://tapdid.in/p/rohan-sharma or upi://pay?pa=rohan@upi">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Assistant Showcase -->
+  <section id="ai-assistant" class="section">
+    <div class="container">
+      <div class="ai-demo-box">
+        <div class="badge">AI Engine for India</div>
+        <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 1.5rem;">TapDID Smart AI Agent</h2>
+
+        <div id="chatMessages" class="chat-messages">
+          <div class="chat-bubble ai">
+            Namaste Rohan! I am your TapDID AI Identity Assistant. How can I optimize your digital business profile
+            today?
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <input type="text" id="aiInput" class="form-input"
+            placeholder="Ask AI: 'Generate bio', 'Show analytics in Rupees', or 'Sync WhatsApp leads'..."
+            style="flex: 1;">
+          <button id="aiSendBtn" class="btn btn-primary">Ask AI</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI & Sustainability Calculator in INR (₹) -->
+  <section id="roi" class="section">
+    <div class="container">
+      <div class="roi-card">
+        <div class="section-header">
+          <div class="badge">Rupees (₹) Savings Calculator</div>
+          <h2 class="section-title">Calculate Savings in Indian Rupees (₹)</h2>
+          <p class="section-subtitle">See how much money your Indian business or team saves per year compared to
+            traditional paper visiting cards.</p>
+        </div>
+
+        <div class="slider-container">
+          <div class="slider-label">
+            <span>Team / Sales Executive Count</span>
+            <span id="teamSizeVal" style="color: var(--accent-cyan);">25</span>
+          </div>
+          <input type="range" id="teamSizeSlider" class="range-slider" min="1" max="500" value="25">
+        </div>
+
+        <div class="slider-container">
+          <div class="slider-label">
+            <span>Paper Visiting Cards Printed / Year per Employee</span>
+            <span id="cardsPerYearVal" style="color: var(--accent-cyan);">500</span>
+          </div>
+          <input type="range" id="cardsPerYearSlider" class="range-slider" min="100" max="2000" step="100" value="500">
+        </div>
+
+        <div class="roi-stats-grid">
+          <div class="roi-stat-box">
+            <div id="savedDollars" class="roi-number">₹56,275</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">Yearly Savings in Rupees (₹)</div>
+          </div>
+          <div class="roi-stat-box">
+            <div id="treesSaved" class="roi-number">1.3 Trees</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">Paper Trees Saved</div>
+          </div>
+          <div class="roi-stat-box">
+            <div id="leadBoost" class="roi-number">+85%</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp Lead Conversion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Plans Section in Rupees (₹) -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Transparent Pricing (INR)</div>
+        <h2 class="section-title">Pricing Plans in Indian Rupees (₹)</h2>
+        <p class="section-subtitle">One-time card purchase, no mandatory monthly charges for individuals. GST Invoice
+          available.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div>
+            <h3>Free Digital Profile</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">For freelancers &amp; individuals</p>
+            <div class="pricing-price">₹0</div>
+            <ul class="pricing-features">
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Digital Profile Web Link</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Dynamic QR &amp; WhatsApp Share</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Standard Contact Save (VCF)</li>
+            </ul>
+          </div>
+          <a href="#customizer" class="btn btn-secondary">Get Free Profile Link</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="popular-badge">Best Seller in India</div>
+          <div>
+            <h3>TapDID Pro Smart Card</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Custom NFC Card + Lifetime Cloud</p>
+            <div class="pricing-price">₹999 <span
+                style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">one-time</span></div>
+            <ul class="pricing-features">
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Premium Matte Metal / Bamboo NFC Card</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Built-in UPI QR &amp; WhatsApp Direct Chat</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> AI Bio &amp; Smart Lead Capture</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Free Doorstep Delivery Across India</li>
+            </ul>
+          </div>
+          <a href="#customizer" class="btn btn-primary btn-glow">Order Pro Card (₹999)</a>
+        </div>
+
+        <div class="pricing-card">
+          <div>
+            <h3>Corporate Enterprise</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Teams, Sales &amp; Asset Management</p>
+            <div class="pricing-price">₹3,333 <span
+                style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">/ month</span></div>
+            <ul class="pricing-features">
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Bulk Team Card Portal &amp; Branding</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Asset Tagger &amp; Inventory Track</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> GST Invoice &amp; Dedicated Account Manager</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg> Zoho / Hubspot / Salesforce Integration</li>
+            </ul>
+          </div>
+          <a href="#customizer" class="btn btn-secondary">Get Enterprise Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Help &amp; Support</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            Does TapDID NFC work on all smartphones in India?
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            Yes! TapDID NFC works natively with iPhones (iPhone 7 and newer) and all NFC-enabled Android smartphones
+            (Samsung, OnePlus, Xiaomi, Vivo, Oppo, RealMe). If an older phone lacks NFC, recipients can simply scan your
+            dynamic QR code!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I receive UPI payments (Google Pay / PhonePe / Paytm) on my TapDID profile?
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            Yes! You can add your UPI ID or payment QR code directly into your digital profile. Anyone tapping your card
+            can make instant UPI payments without asking for your bank details.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How fast is delivery within India?
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            Custom printed cards are dispatched within 24-48 hours. Express delivery takes 2-4 business days for major
+            metro cities (Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, Kolkata, Pune) and 3-5 days across rest of
+            India.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Tap Modal -->
+  <div id="tapOverlay" class="tap-animation-overlay">
+    <div class="tap-modal-content">
+      <div class="ripple-circle">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      </div>
+      <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">NFC Tap Detected!</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Simulated Indian Phone Contact
+        &amp; WhatsApp Exchange signal active.</p>
+      <button id="closeTapModal" class="btn btn-primary btn-glow">Close Simulation</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo-white.svg" alt="TapDID Logo" style="height: 48px; width: auto;">
+          <p>TapDID is India's Digital Identity Platform using NFC, Dynamic QR, AI, and cloud technology to connect
+            people, businesses, and assets with a single tap.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#features">NFC Cards (₹999)</a></li>
+            <li><a href="#qr-engine">UPI &amp; Dynamic QR</a></li>
+            <li><a href="#ai-assistant">AI Bio Assistant</a></li>
+            <li><a href="#roi">Cloud Analytics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Cities in India</h4>
+          <ul class="footer-links">
+            <li><a href="#pricing">Mumbai / Pune</a></li>
+            <li><a href="#pricing">Bengaluru / Hyderabad</a></li>
+            <li><a href="#pricing">Delhi NCR / Gurgaon</a></li>
+            <li><a href="#pricing">Chennai / Kolkata</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact &amp; Support</h4>
+          <ul class="footer-links">
+            <li style="color: var(--text-muted); font-size: 0.9rem;">Email: <a href="mailto:support@tapdid.com"
+                style="color: var(--accent-cyan);">support@tapdid.com</a></li>
+            <li style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp: <a href="https://wa.me/919876543210"
+                style="color: var(--accent-mint);">+91 98765 43210</a></li>
+            <li style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Corporate HQ: Mumbai &amp;
+              Bengaluru, India</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 TapDID India Technologies Pvt Ltd. All rights reserved. Your Digital Identity. One Tap Away.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+
+</html>

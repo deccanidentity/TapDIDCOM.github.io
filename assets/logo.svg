@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="100%" height="100%">
+  <!-- Horizontal Main Logo (Light Theme Version - Perfectly Centered) -->
+  <g transform="translate(10, 10)">
+    
+    <!-- LEFT: Monogram TD Symbol with ample left margin -->
+    <g transform="translate(50, 0) scale(0.68)">
+      <!-- T Stem & Top Bar -->
+      <path d="M 10 15 L 165 15 C 180 15 190 25 190 40 C 190 55 180 65 165 65 L 126 65 L 126 215 C 126 230 114 240 99 240 C 84 240 72 230 72 215 L 72 65 L 10 65 C -5 65 -15 55 -15 40 C -15 25 -5 15 10 15 Z" fill="#0052FF"/>
+
+      <!-- Finger Tap Icon at base of T -->
+      <g transform="translate(38, 145)">
+        <circle cx="60" cy="40" r="18" fill="none" stroke="#0052FF" stroke-width="7"/>
+        <path d="M 60 40 C 60 30 68 22 78 22 C 88 22 96 30 96 40 L 96 95 C 99 92 104 90 109 90 C 118 90 125 97 125 106 L 125 120 C 125 155 97 182 62 182 C 37 182 16 167 7 144 L -5 109 C -8 102 -6 93 1 88 C 8 83 18 85 23 92 L 31 107 L 60 107 Z" fill="#001233"/>
+      </g>
+
+      <!-- D Outer Loop -->
+      <path d="M 170 15 L 245 15 C 335 15 400 75 400 165 C 400 255 335 315 245 315 L 130 315 C 115 315 105 305 105 290 C 105 275 115 265 130 265 L 245 265 C 305 265 340 225 340 165 C 340 105 305 65 245 65 L 170 65 Z" fill="#001233"/>
+
+      <!-- NFC Waves inside D -->
+      <g fill="none" stroke="#0052FF" stroke-width="22" stroke-linecap="round">
+        <path d="M 230 115 A 60 60 0 0 1 230 215"/>
+        <path d="M 265 90 A 95 95 0 0 1 265 240"/>
+      </g>
+    </g>
+
+    <!-- RIGHT: Text & Tagline -->
+    <g transform="translate(345, 10)">
+      <!-- Main Title Text: TapDID -->
+      <text x="0" y="115" font-family="'Outfit', 'Inter', system-ui, sans-serif" font-weight="900" font-size="102" letter-spacing="-1">
+        <tspan fill="#001233">Tap</tspan>
+        <tspan fill="#0052FF">DID</tspan>
+      </text>
+
+      <!-- Tagline Text -->
+      <g transform="translate(0, 160)">
+        <line x1="0" y1="-6" x2="30" y2="-6" stroke="#0052FF" stroke-width="4" stroke-linecap="round"/>
+        <text x="42" y="0" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="20.5" fill="#1E293B" letter-spacing="0.1">Your Digital Identity. One Tap Away.</text>
+        <line x1="410" y1="-6" x2="440" y2="-6" stroke="#0052FF" stroke-width="4" stroke-linecap="round"/>
+      </g>
+    </g>
+
+  </g>
+</svg>
