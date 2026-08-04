@@ -217,9 +217,11 @@ function initCardCustomizer() {
 
   updateSubmitPrice();
 
-  // Submit Card Order Button Handler
+  // Submit Card Order Button Handler (Google Form Integration)
   if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
+    submitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
       const name = nameInput ? nameInput.value.trim() : '';
       const role = roleInput ? roleInput.value.trim() : '';
       const company = companyInput ? companyInput.value.trim() : '';
@@ -227,6 +229,8 @@ function initCardCustomizer() {
       const email = emailInput ? emailInput.value.trim() : '';
       const phoneInput = document.getElementById('inputPhone');
       const phone = phoneInput ? phoneInput.value.trim() : '';
+      const addressInput = document.getElementById('inputAddress');
+      const address = addressInput ? addressInput.value.trim() : '';
 
       if (!name) {
         alert('Please enter your full name for your card/profile.');
@@ -234,15 +238,66 @@ function initCardCustomizer() {
         return;
       }
 
-      const selectedMatBtn = document.querySelector('.material-btn.active');
-      const finishText = selectedMatBtn ? selectedMatBtn.textContent : 'Classic PVC (₹300)';
-      const isFree = finishText.includes('FREE') || finishText.includes('₹0');
-
-      if (isFree) {
-        alert(`✅ Congratulations, ${name}!\n\nYour Free Digital Profile request has been captured successfully.\n\nSummary:\n• Name: ${name}\n• Designation: ${role}\n• Company: ${company}\n• Email: ${email || 'N/A'}\n• Phone: ${phone || 'N/A'}\n\nOur team will generate your digital profile link & dynamic QR code and send it via WhatsApp (+91 8186 035869) or email.`);
-      } else {
-        alert(`✅ Thank you, ${name}!\n\nYour order details for "${finishText}" have been captured successfully.\n\nSummary:\n• Name: ${name}\n• Designation: ${role}\n• Company: ${company}\n• Email: ${email || 'N/A'}\n• Phone: ${phone || 'N/A'}\n\nOur team will contact you via WhatsApp (+91 8186 035869) or email with your digital card proof & tracking details.`);
+      if (!phone && !email) {
+        alert('Please enter at least a Phone/WhatsApp number or Email address.');
+        if (phoneInput) phoneInput.focus();
+        return;
       }
+
+      const selectedMatBtn = document.querySelector('.material-btn.active');
+      const finishText = selectedMatBtn ? selectedMatBtn.textContent.trim() : 'Classic PVC (₹300)';
+
+      // Google Form Entry Mapping:
+      // entry.1274786449 -> Full Name
+      // entry.546882646  -> Job Title / Designation
+      // entry.2037005705 -> Company / Brand Name
+      // entry.19666781   -> Email Address
+      // entry.76794006   -> Phone / WhatsApp Number
+      // entry.239897770  -> Delivery Shipping Address
+      // entry.309807849  -> Material Finish / Price
+      const formId = '1FAIpQLScyRO4jVOfS2HoQg1iRjGeIJQARl2Z5jXUPWas_MslEOhETAA';
+      const formResponseUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
+      
+      const prefillUrl = `https://docs.google.com/forms/d/e/${formId}/viewform?usp=pp_url` +
+        `&entry.1274786449=${encodeURIComponent(name)}` +
+        `&entry.546882646=${encodeURIComponent(role)}` +
+        `&entry.2037005705=${encodeURIComponent(company)}` +
+        `&entry.19666781=${encodeURIComponent(email)}` +
+        `&entry.76794006=${encodeURIComponent(phone)}` +
+        `&entry.239897770=${encodeURIComponent(address)}` +
+        `&entry.309807849=${encodeURIComponent(finishText)}`;
+
+      // Post entries directly to Google Form Response
+      const formData = new FormData();
+      formData.append('entry.1274786449', name);
+      formData.append('entry.546882646', role);
+      formData.append('entry.2037005705', company);
+      formData.append('entry.19666781', email);
+      formData.append('entry.76794006', phone);
+      formData.append('entry.239897770', address);
+      formData.append('entry.309807849', finishText);
+
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting Order...';
+
+      fetch(formResponseUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+
+        alert(`✅ Order Submitted Successfully!\n\nThank you, ${name}.\nYour order details for "${finishText}" have been captured in our Google Form system.\n\nOpening your pre-filled confirmation form...`);
+        window.open(prefillUrl, '_blank');
+      }).catch((err) => {
+        console.error('Submit error:', err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+
+        window.open(prefillUrl, '_blank');
+      });
     });
   }
 }
