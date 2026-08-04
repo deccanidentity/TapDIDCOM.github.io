@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRoiCalculator();
   initFaqAccordion();
   initTapSimulator();
+  initScenarioScreen();
 });
 
 // Remove preload class after page load to enable smooth transitions without load flickering
@@ -95,14 +96,14 @@ function initMobileNav() {
    ========================================================================== */
 function initThemeToggle() {
   const themeBtn = document.getElementById('themeToggle');
-  const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('tapdid_theme') || 'dark';
+  const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('tapdid_theme') || 'light';
   
   updateThemeIcon(currentTheme);
 
   if (!themeBtn) return;
 
   themeBtn.addEventListener('click', () => {
-    const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('tapdid_theme', newTheme);
@@ -190,9 +191,15 @@ function initCardCustomizer() {
     if (!submitBtn) return;
     const activeBtn = document.querySelector('.material-btn.active');
     if (activeBtn) {
-      const match = activeBtn.textContent.match(/₹[\d,]+/);
-      const price = match ? match[0] : '₹300';
-      submitBtn.textContent = `Submit Card Order Details (${price})`;
+      const text = activeBtn.textContent;
+      const isFree = text.includes('FREE') || text.includes('₹0');
+      const match = text.match(/₹[\d,]+/);
+      if (isFree) {
+        submitBtn.textContent = `Claim Free Digital Profile (₹0)`;
+      } else {
+        const price = match ? match[0] : '₹300';
+        submitBtn.textContent = `Submit Card Order Details (${price})`;
+      }
     }
   }
 
@@ -222,21 +229,26 @@ function initCardCustomizer() {
       const phone = phoneInput ? phoneInput.value.trim() : '';
 
       if (!name) {
-        alert('Please enter your full name for the card print.');
+        alert('Please enter your full name for your card/profile.');
         if (nameInput) nameInput.focus();
         return;
       }
 
       const selectedMatBtn = document.querySelector('.material-btn.active');
       const finishText = selectedMatBtn ? selectedMatBtn.textContent : 'Classic PVC (₹300)';
+      const isFree = finishText.includes('FREE') || finishText.includes('₹0');
 
-      alert(`✅ Thank you, ${name}!\n\nYour order details for "${finishText}" have been captured successfully.\n\nSummary:\n• Name: ${name}\n• Designation: ${role}\n• Company: ${company}\n• Email: ${email || 'N/A'}\n• Phone: ${phone || 'N/A'}\n\nOur team will contact you via WhatsApp (+91 8186 035869) or email with your digital card proof & tracking details.`);
+      if (isFree) {
+        alert(`✅ Congratulations, ${name}!\n\nYour Free Digital Profile request has been captured successfully.\n\nSummary:\n• Name: ${name}\n• Designation: ${role}\n• Company: ${company}\n• Email: ${email || 'N/A'}\n• Phone: ${phone || 'N/A'}\n\nOur team will generate your digital profile link & dynamic QR code and send it via WhatsApp (+91 8186 035869) or email.`);
+      } else {
+        alert(`✅ Thank you, ${name}!\n\nYour order details for "${finishText}" have been captured successfully.\n\nSummary:\n• Name: ${name}\n• Designation: ${role}\n• Company: ${company}\n• Email: ${email || 'N/A'}\n• Phone: ${phone || 'N/A'}\n\nOur team will contact you via WhatsApp (+91 8186 035869) or email with your digital card proof & tracking details.`);
+      }
     });
   }
 }
 
 /* ==========================================================================
-   Dynamic QR & UPI Canvas Engine
+   Dynamic QR & UPI Canvas Engine (Real Scannable QR Generator)
    ========================================================================== */
 function initQrEngine() {
   const canvas = document.getElementById('qrCanvas');
@@ -248,85 +260,50 @@ function initQrEngine() {
   const ctx = canvas.getContext('2d');
 
   function renderQr(text) {
-    const size = 220;
+    const raw = (text && text.trim()) ? text.trim() : 'https://www.tapdid.com';
+    const targetUrl = (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('upi:')) ? raw : `https://${raw}`;
+    const size = 260;
     canvas.width = size;
     canvas.height = size;
 
-    // Draw white background
+    // Draw clean background
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, size, size);
 
-    // Draw QR pattern simulation (accurate grid alignment)
-    const gridSize = 23;
-    const cellSize = size / gridSize;
-
-    // Seed hash from input string
-    let hash = 0;
-    for (let i = 0; i < text.length; i++) {
-      hash = (hash << 5) - hash + text.charCodeAt(i);
-      hash |= 0;
-    }
-
-    ctx.fillStyle = '#060B19';
-
-    // Position detection patterns (corners)
-    drawFinderPattern(ctx, 0, 0, cellSize);
-    drawFinderPattern(ctx, (gridSize - 7) * cellSize, 0, cellSize);
-    drawFinderPattern(ctx, 0, (gridSize - 7) * cellSize, cellSize);
-
-    // Data matrix modules
-    for (let r = 0; r < gridSize; r++) {
-      for (let c = 0; c < gridSize; c++) {
-        // Skip finder pattern zones
-        if ((r < 7 && c < 7) || (r < 7 && c >= gridSize - 7) || (r >= gridSize - 7 && c < 7)) {
-          continue;
-        }
-
-        // Pseudo-random deterministic module placement
-        const val = Math.abs(Math.sin(r * 12.9898 + c * 78.233 + hash) * 43758.5453);
-        if (val % 1 > 0.40) {
-          ctx.fillRect(c * cellSize + 0.5, r * cellSize + 0.5, cellSize - 1, cellSize - 1);
-        }
-      }
-    }
-
-    // Centered TapDID Badge Logo
-    const centerSize = size * 0.24;
-    const centerPos = (size - centerSize) / 2;
-    ctx.fillStyle = '#0052FF';
-    ctx.beginPath();
-    ctx.arc(size / 2, size / 2, centerSize / 2 + 4, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 14px Outfit, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('TD', size / 2, size / 2);
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, size, size);
+    };
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(targetUrl)}`;
   }
 
-  function drawFinderPattern(ctx, x, y, cellSize) {
-    ctx.fillStyle = '#060B19';
-    ctx.fillRect(x, y, 7 * cellSize, 7 * cellSize);
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(x + cellSize, y + cellSize, 5 * cellSize, 5 * cellSize);
-    ctx.fillStyle = '#0052FF';
-    ctx.fillRect(x + 2 * cellSize, y + 2 * cellSize, 3 * cellSize, 3 * cellSize);
+  function updateCardBackQr(text) {
+    const cardBackImgs = document.querySelectorAll('.card-back-qr-img');
+    const raw = (text && text.trim()) ? text.trim() : 'https://www.tapdid.com';
+    const targetUrl = (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('upi:')) ? raw : `https://${raw}`;
+    const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(targetUrl)}`;
+    cardBackImgs.forEach(img => {
+      img.src = qrSrc;
+    });
   }
 
-  const initialVal = qrInput ? qrInput.value : 'https://tapdid.in/p/rohan-sharma';
+  const initialVal = qrInput ? (qrInput.value || 'https://www.tapdid.com') : 'https://www.tapdid.com';
   renderQr(initialVal);
+  updateCardBackQr(initialVal);
 
   if (qrInput) {
     qrInput.addEventListener('input', (e) => {
-      renderQr(e.target.value || 'https://tapdid.in');
+      const val = e.target.value || 'https://www.tapdid.com';
+      renderQr(val);
+      updateCardBackQr(val);
     });
   }
 
   if (qrDownloadBtn) {
     qrDownloadBtn.addEventListener('click', () => {
       const link = document.createElement('a');
-      link.download = 'TapDID--QR.png';
+      link.download = 'TapDID-Official-QR.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
@@ -471,4 +448,113 @@ function initFaqAccordion() {
       }
     });
   });
+}
+
+/* ==========================================================================
+   Scenario Interactive Filtering & Live Simulator
+   ========================================================================== */
+function initScenarioScreen() {
+  const filterBtns = document.querySelectorAll('.scenario-filter-bar .filter-btn');
+  const scenarioCards = document.querySelectorAll('.scenario-card-detailed');
+
+  if (filterBtns.length > 0 && scenarioCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        scenarioCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Interactive Live Scenario Simulator
+  const simNavBtns = document.querySelectorAll('.sim-nav-btn');
+  const simDisplay = document.getElementById('simDisplayScreen');
+
+  const simScenarios = {
+    networking: {
+      phoneHeader: '⚡ TapDID NFC Tap Received',
+      contentHTML: `
+        <div style="background: rgba(0, 82, 255, 0.15); border: 1px solid var(--accent-cyan); padding: 1.1rem; border-radius: 16px; text-align: center; width: 100%;">
+          <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--accent-gradient); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.25rem;">RS</div>
+          <h4 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.15rem;">Rohan Sharma</h4>
+          <p style="color: var(--accent-cyan); font-size: 0.88rem; font-weight: 600;">Founder & CEO — Apex Pvt Ltd</p>
+          <div style="margin-top: 0.85rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" style="padding: 0.45rem 0.85rem; font-size: 0.8rem;">📥 Save Contact (.VCF)</button>
+            <button class="btn btn-secondary" style="padding: 0.45rem 0.85rem; font-size: 0.8rem;">💬 WhatsApp Direct</button>
+            <button class="btn btn-secondary" style="padding: 0.45rem 0.85rem; font-size: 0.8rem;">💳 Pay via UPI</button>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem;">Verified AES-256 NFC Signature ✅ • Zero app download needed</p>
+        </div>
+      `
+    },
+    enterprise: {
+      phoneHeader: '🏢 TapDID Access Kiosk',
+      contentHTML: `
+        <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 1.1rem; border-radius: 16px; text-align: center; width: 100%;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.3rem;">🔓</div>
+          <h4 style="color: #10b981; margin-bottom: 0.2rem; font-size: 1.15rem;">Access Granted — Turnstile 04</h4>
+          <p style="color: var(--text-main); font-size: 0.9rem; font-weight: 600;">Ananya Roy (Senior Tech Lead)</p>
+          <p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem;">Role Clearance: Level 4 • Tech Tower B • Entry Time: 09:42:18 AM</p>
+          <p style="font-size: 0.78rem; color: #10b981; margin-top: 0.65rem; font-weight: 600;">Automated HRMS Attendance Clocked ✅</p>
+        </div>
+      `
+    },
+    asset: {
+      phoneHeader: '🔍 TapDID Cryptographic Asset Shield',
+      contentHTML: `
+        <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; padding: 1.1rem; border-radius: 16px; text-align: center; width: 100%;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.3rem;">🛡️</div>
+          <h4 style="color: #f59e0b; margin-bottom: 0.2rem; font-size: 1.15rem;">100% Genuine Certified Asset</h4>
+          <p style="color: var(--text-main); font-size: 0.9rem; font-weight: 600;">Chronograph Platinum Limited Edition #482/500</p>
+          <div style="text-align: left; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.6rem; line-height: 1.4;">
+            • Tag ID: <code>NFC-9948-2849-SEC</code><br>
+            • Origin: Geneva, Switzerland<br>
+            • Cryptographic Hash: <code>0x8F9...3A12</code>
+          </div>
+          <p style="font-size: 0.78rem; color: #f59e0b; margin-top: 0.65rem; font-weight: 600;">Blockchain Provenance Verified ✅</p>
+        </div>
+      `
+    },
+    healthcare: {
+      phoneHeader: '🚨 TapDID First-Responder Alert',
+      contentHTML: `
+        <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; padding: 1.1rem; border-radius: 16px; text-align: center; width: 100%;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.3rem;">🚨</div>
+          <h4 style="color: #ef4444; margin-bottom: 0.2rem; font-size: 1.15rem;">Emergency Health Profile</h4>
+          <p style="color: var(--text-main); font-size: 0.9rem; font-weight: 700;">Vikram Malhotra (Blood Group: O+ Positive)</p>
+          <div style="text-align: left; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.4;">
+            • Known Allergies: Penicillin<br>
+            • Emergency Contact: +91 98200 11223 (Spouse)<br>
+            • Hospital: Apollo Health City
+          </div>
+          <p style="font-size: 0.78rem; color: #ef4444; margin-top: 0.65rem; font-weight: 600;">Instant Emergency Alert Sent to Kin ✅</p>
+        </div>
+      `
+    }
+  };
+
+  if (simNavBtns.length > 0 && simDisplay) {
+    simNavBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        simNavBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const key = btn.getAttribute('data-sim');
+        const data = simScenarios[key] || simScenarios.networking;
+        simDisplay.innerHTML = `
+          <div style="font-size: 0.78rem; color: var(--accent-cyan); text-transform: uppercase; font-weight: 700; margin-bottom: 0.6rem;">${data.phoneHeader}</div>
+          ${data.contentHTML}
+        `;
+      });
+    });
+  }
 }

@@ -4,7 +4,7 @@
 <head>
   <script>
     (function () {
-      var saved = localStorage.getItem('tapdid_theme') || 'dark';
+      var saved = localStorage.getItem('tapdid_theme') || 'light';
       document.documentElement.setAttribute('data-theme', saved);
     })();
   </script>
@@ -34,8 +34,8 @@
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="technologies.html" class="nav-link">Technologies</a></li>
           <li><a href="scenarios.html" class="nav-link">Scenarios</a></li>
-          <li><a href="card-studio.html" class="nav-link active">NFC Cards</a></li>
           <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
+          <li><a href="card-studio.html" class="nav-link active">NFC Cards</a></li>
           <li><a href="demo.html" class="nav-link">Demo</a></li>
           <li class="mobile-cta-item">
             <a href="#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹300)</a>
@@ -59,12 +59,12 @@
   </header>
 
   <!-- Page Banner -->
-  <section class="hero" style="min-height: auto; padding-top: 8.5rem; padding-bottom: 3rem;">
+  <section class="hero" style="min-height: auto; padding-top: 6.25rem; padding-bottom: 1.25rem;">
     <div class="hero-bg-glow"></div>
     <div class="container text-center" style="text-align: center;">
       <div class="badge">Card Studio &amp; Dynamic QR</div>
-      <h1 class="section-title" style="font-size: 3rem; margin-top: 0.5rem;">Interactive NFC Card Studio</h1>
-      <p class="section-subtitle" style="max-width: 650px; margin: 0.5rem auto 0;">Customize your encrypted NFC smart
+      <h1 class="section-title" style="font-size: 2.75rem; margin-top: 0.35rem; margin-bottom: 0.5rem;">Interactive NFC Card Studio</h1>
+      <p class="section-subtitle" style="max-width: 650px; margin: 0.25rem auto 0;">Customize your encrypted NFC smart
         card and generate custom dynamic QR codes with live instant preview.</p>
     </div>
   </section>
@@ -76,8 +76,8 @@
         <div class="customizer-grid">
           <div>
             <div class="badge">NFC Card Studio</div>
-            <h2 class="section-title" style="text-align: left; font-size: 2.2rem;">Order Your Custom TapDID Card</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Personalize your smart NFC visiting card starting from ₹300 (including free doorstep express delivery across India).</p>
+            <h2 class="section-title" style="text-align: left; font-size: 2rem; margin-bottom: 0.4rem;">Order Your Custom TapDID Card</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.1rem; font-size: 0.95rem;">Personalize your smart NFC visiting card starting from ₹300 (or get a Free Digital Profile link).</p>
 
             <div class="form-group">
               <label for="inputName">Full Name (Card Print)</label>
@@ -114,6 +114,7 @@
             <div class="form-group">
               <label>Select Premium Finish</label>
               <div class="material-selector">
+                <button class="material-btn" data-mat="digital-free">Digital Profile (FREE ₹0)</button>
                 <button class="material-btn active" data-mat="classic-pvc">Classic PVC (₹300)</button>
                 <button class="material-btn" data-mat="matte-black">Matte Metal (₹999)</button>
                 <button class="material-btn" data-mat="gold">24K Gold (₹1,999)</button>
@@ -122,7 +123,7 @@
               </div>
             </div>
 
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem;">
+            <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; margin-top: 1.25rem;">
               <button id="submitCardOrderBtn" class="btn btn-primary btn-glow" style="flex: 1; min-width: 200px;">
                 Submit Card Order Details (₹300)
               </button>
@@ -132,12 +133,12 @@
             </div>
           </div>
 
-          <div style="text-align: center;">
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Live Card Rendering (TapDID NFC Standard)</p>
+          <div class="customizer-preview-col">
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem; font-weight: 600;">Live Card Rendering (TapDID NFC Standard)</p>
 
             <!-- 3D Interactive Card Showcase -->
-            <div class="card-preview-wrapper" style="margin-bottom: 1.5rem;">
-              <div id="nfcCard3D" class="nfc-card-3d" data-material="matte-black">
+            <div class="card-preview-wrapper" style="margin-bottom: 1.1rem;">
+              <div id="nfcCard3D" class="nfc-card-3d" data-material="classic-pvc">
                 <!-- Front Face -->
                 <div class="card-face card-face-front">
                   <div class="card-header-line">
@@ -164,21 +165,10 @@
 
                 <!-- Back Face -->
                 <div class="card-face card-face-back">
-                  <div style="background: #fff; padding: 0.75rem; border-radius: 12px;">
-                    <svg width="100" height="100" viewBox="0 0 100 100">
-                      <rect width="100" height="100" fill="#fff" />
-                      <path d="M 10 10 H 35 V 35 H 10 Z M 15 15 V 30 H 30 V 15 Z M 20 20 H 25 V 25 H 20 Z"
-                        fill="#001233" />
-                      <path d="M 65 10 H 90 V 35 H 65 Z M 70 15 V 30 H 85 V 15 Z M 75 20 H 80 V 25 H 75 Z"
-                        fill="#001233" />
-                      <path d="M 10 65 H 35 V 90 H 10 Z M 15 70 V 85 H 30 V 70 Z M 20 75 H 25 V 80 H 20 Z"
-                        fill="#001233" />
-                      <rect x="45" y="45" width="10" height="10" fill="#0052FF" />
-                    </svg>
+                  <div style="background: #fff; padding: 0.5rem; border-radius: 12px; display: inline-block;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.tapdid.com" alt="TapDID QR Code" class="card-back-qr-img" style="width: 100px; height: 100px; display: block; border-radius: 6px;">
                   </div>
-                  <p style="margin-top: 0.75rem; font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">Scan
-                    QR / GPay / PhonePe
-                    / Tap Phone</p>
+                  <p style="margin-top: 0.6rem; font-size: 0.88rem; font-weight: 500; color: var(--text-muted);">Scan QR to open www.tapdid.com</p>
                 </div>
               </div>
               <p class="card-hint">
@@ -187,10 +177,10 @@
             </div>
 
             <div
-              style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 20px; border: 1px dashed var(--border-color);">
-              <p style="color: var(--accent-cyan); font-weight: 600;">Encrypted NFC Chip + Dynamic QR</p>
-              <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">Free doorstep express
-                delivery across (Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune &amp; more).</p>
+              style="background: rgba(0,0,0,0.25); padding: 1.1rem; border-radius: 16px; border: 1px dashed var(--border-color);">
+              <p style="color: var(--accent-cyan); font-weight: 600; font-size: 0.95rem;">Encrypted NFC Chip + Dynamic QR</p>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.4;">Free doorstep express
+                delivery across all major cities (Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune &amp; more).</p>
             </div>
           </div>
         </div>
@@ -221,8 +211,8 @@
 
           <div class="form-group">
             <label for="qrDataInput">Profile or UPI Payment Link</label>
-            <input type="text" id="qrDataInput" class="form-input" value="https://tapdid.in/p/rohan-sharma"
-              placeholder="e.g. https://tapdid.in/p/rohan-sharma or upi://pay?pa=rohan@upi">
+            <input type="text" id="qrDataInput" class="form-input" value="https://www.tapdid.com"
+              placeholder="e.g. https://www.tapdid.com or upi://pay?pa=rohan@upi">
           </div>
         </div>
       </div>
@@ -246,8 +236,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="technologies.html">Technologies</a></li>
             <li><a href="scenarios.html">Scenarios</a></li>
-            <li><a href="card-studio.html">NFC Cards</a></li>
             <li><a href="pricing.html">Pricing (₹)</a></li>
+            <li><a href="card-studio.html">NFC Cards</a></li>
             <li><a href="demo.html">Request Demo</a></li>
           </ul>
         </div>

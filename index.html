@@ -4,7 +4,7 @@
 <head>
   <script>
     (function () {
-      var saved = localStorage.getItem('tapdid_theme') || 'dark';
+      var saved = localStorage.getItem('tapdid_theme') || 'light';
       document.documentElement.setAttribute('data-theme', saved);
     })();
   </script>
@@ -52,8 +52,8 @@
           <li><a href="index.html" class="nav-link active">Home</a></li>
           <li><a href="technologies.html" class="nav-link">Technologies</a></li>
           <li><a href="scenarios.html" class="nav-link">Scenarios</a></li>
-          <li><a href="card-studio.html" class="nav-link">NFC Cards</a></li>
           <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
+          <li><a href="card-studio.html" class="nav-link">NFC Cards</a></li>
           <li><a href="demo.html" class="nav-link">Demo</a></li>
           <li class="mobile-cta-item">
             <a href="card-studio.html#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹300)</a>
@@ -148,18 +148,10 @@
 
           <!-- Back Face -->
           <div class="card-face card-face-back">
-            <div style="background: #fff; padding: 0.75rem; border-radius: 12px;">
-              <svg width="100" height="100" viewBox="0 0 100 100">
-                <rect width="100" height="100" fill="#fff" />
-                <path d="M 10 10 H 35 V 35 H 10 Z M 15 15 V 30 H 30 V 15 Z M 20 20 H 25 V 25 H 20 Z" fill="#001233" />
-                <path d="M 65 10 H 90 V 35 H 65 Z M 70 15 V 30 H 85 V 15 Z M 75 20 H 80 V 25 H 75 Z" fill="#001233" />
-                <path d="M 10 65 H 35 V 90 H 10 Z M 15 70 V 85 H 30 V 70 Z M 20 75 H 25 V 80 H 20 Z" fill="#001233" />
-                <rect x="45" y="45" width="10" height="10" fill="#0052FF" />
-              </svg>
+            <div style="background: #fff; padding: 0.5rem; border-radius: 12px; display: inline-block;">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.tapdid.com" alt="TapDID QR Code" class="card-back-qr-img" style="width: 100px; height: 100px; display: block; border-radius: 6px;">
             </div>
-            <p style="margin-top: 0.75rem; font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">Scan QR /
-              GPay / PhonePe / Tap
-              Phone</p>
+            <p style="margin-top: 0.6rem; font-size: 0.88rem; font-weight: 500; color: var(--text-muted);">Scan QR to open www.tapdid.com</p>
           </div>
 
         </div>
@@ -384,8 +376,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="technologies.html">Technologies</a></li>
             <li><a href="scenarios.html">Scenarios</a></li>
-            <li><a href="card-studio.html">NFC Cards</a></li>
             <li><a href="pricing.html">Pricing (₹)</a></li>
+            <li><a href="card-studio.html">NFC Cards</a></li>
             <li><a href="demo.html">Request Demo</a></li>
           </ul>
         </div>
