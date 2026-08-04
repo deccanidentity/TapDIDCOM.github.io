@@ -81,18 +81,18 @@
 
             <div class="form-group">
               <label for="inputName">Full Name (Card Print)</label>
-              <input type="text" id="inputName" class="form-input" value="Rohan Sharma" placeholder="e.g. Rohan Sharma">
+              <input type="text" id="inputName" class="form-input" placeholder="e.g. Rohan Sharma">
             </div>
 
             <div class="form-group">
               <label for="inputRole">Job Title / Designation</label>
-              <input type="text" id="inputRole" class="form-input" value="Founder & CEO"
+              <input type="text" id="inputRole" class="form-input"
                 placeholder="e.g. Founder & CEO / Managing Director">
             </div>
 
             <div class="form-group">
               <label for="inputCompany">Company / Brand Name</label>
-              <input type="text" id="inputCompany" class="form-input" value="Apex Innovations Pvt Ltd"
+              <input type="text" id="inputCompany" class="form-input"
                 placeholder="e.g. Apex Innovations Pvt Ltd">
             </div>
 
@@ -123,17 +123,17 @@
               </div>
             </div>
 
-            <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; margin-top: 1.25rem;">
-              <button id="submitCardOrderBtn" class="btn btn-primary btn-glow" style="flex: 1; min-width: 200px;">
-                Submit Card Order Details (₹300)
+            <div class="customizer-actions-group" style="display: flex; gap: 0.65rem; flex-wrap: wrap; margin-top: 1.25rem;">
+              <button id="submitCardOrderBtn" class="btn btn-primary btn-glow" style="flex: 1.5; min-width: 160px;">
+                Submit Order (₹300)
               </button>
-              <a href="https://wa.me/918186035869?text=Hi%20TapDID%20Team,%20I%20would%20like%20to%20order%20a%20Custom%20NFC%20Smart%20Card." target="_blank" class="btn btn-secondary" style="flex: 1; min-width: 220px;">
-                Reach out via WhatsApp (+91 8186 035869)
+              <button id="resetFormBtn" type="button" class="btn btn-secondary" style="flex: 1; min-width: 100px;">
+                Clear Form
+              </button>
+              <a href="https://wa.me/918186035869?text=Hi%20TapDID%20Team,%20I%20would%20like%20to%20order%20a%20Custom%20NFC%20Smart%20Card." target="_blank" class="btn btn-secondary" style="flex: 1.5; min-width: 160px;">
+                WhatsApp Us (+91 8186 035869)
               </a>
             </div>
-            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.65rem;">
-              🔒 Orders are captured securely via <a href="https://docs.google.com/forms/d/e/1FAIpQLScyRO4jVOfS2HoQg1iRjGeIJQARl2Z5jXUPWas_MslEOhETAA/viewform" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;">Google Forms</a>.
-            </p>
           </div>
 
           <div class="customizer-preview-col">
@@ -155,9 +155,9 @@
                   </div>
 
                   <div class="card-user-details">
-                    <h3 id="cardName">Rohan Sharma</h3>
-                    <p id="cardRole">Founder &amp; CEO</p>
-                    <span id="cardCompany" class="card-company">Apex Innovations Pvt Ltd</span>
+                    <h3 id="cardName">Your Name</h3>
+                    <p id="cardRole">Your Designation</p>
+                    <span id="cardCompany" class="card-company">Your Company / Brand</span>
                   </div>
 
                   <div class="card-footer-line">
@@ -272,6 +272,27 @@
       </div>
     </div>
   </footer>
+
+  <!-- App-Style Order Success Modal Overlay -->
+  <div id="orderSuccessModal" class="order-modal-overlay">
+    <div class="order-modal-card">
+      <div class="order-success-icon">
+        <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h2 style="font-size: 1.65rem; margin-bottom: 0.35rem; color: var(--text-main);">Order Submitted!</h2>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.25rem;">Your custom NFC card order has been captured successfully in our Google Forms system.</p>
+      
+      <div id="orderSummaryBox" class="order-summary-box">
+        <!-- Dynamically injected summary -->
+      </div>
+
+      <button id="closeOrderModalBtn" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 1.25rem;">
+        Done &amp; Reset Card Studio
+      </button>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

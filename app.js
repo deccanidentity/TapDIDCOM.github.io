@@ -159,7 +159,14 @@ function initCardCustomizer() {
   const cardRole = document.getElementById('cardRole');
   const cardCompany = document.getElementById('cardCompany');
 
+  const resetBtn = document.getElementById('resetFormBtn');
+  const submitBtn = document.getElementById('submitCardOrderBtn');
+
   if (!card3d) return;
+
+  const DEFAULT_NAME = 'Your Name';
+  const DEFAULT_ROLE = 'Your Designation';
+  const DEFAULT_COMPANY = 'Your Company / Brand';
 
   // Card Flip on Click
   card3d.addEventListener('click', () => {
@@ -169,23 +176,21 @@ function initCardCustomizer() {
   // Inputs real-time reflection
   if (nameInput && cardName) {
     nameInput.addEventListener('input', (e) => {
-      cardName.textContent = e.target.value || 'Rohan Sharma';
+      cardName.textContent = e.target.value.trim() || DEFAULT_NAME;
     });
   }
 
   if (roleInput && cardRole) {
     roleInput.addEventListener('input', (e) => {
-      cardRole.textContent = e.target.value || 'Founder & CEO';
+      cardRole.textContent = e.target.value.trim() || DEFAULT_ROLE;
     });
   }
 
   if (companyInput && cardCompany) {
     companyInput.addEventListener('input', (e) => {
-      cardCompany.textContent = e.target.value || 'Apex Innovations Pvt Ltd';
+      cardCompany.textContent = e.target.value.trim() || DEFAULT_COMPANY;
     });
   }
-
-  const submitBtn = document.getElementById('submitCardOrderBtn');
 
   function updateSubmitPrice() {
     if (!submitBtn) return;
@@ -195,10 +200,10 @@ function initCardCustomizer() {
       const isFree = text.includes('FREE') || text.includes('₹0');
       const match = text.match(/₹[\d,]+/);
       if (isFree) {
-        submitBtn.textContent = `Claim Free Digital Profile (₹0)`;
+        submitBtn.textContent = `Claim Free Profile (₹0)`;
       } else {
         const price = match ? match[0] : '₹300';
-        submitBtn.textContent = `Submit Card Order Details (${price})`;
+        submitBtn.textContent = `Submit Order (${price})`;
       }
     }
   }
@@ -216,6 +221,79 @@ function initCardCustomizer() {
   });
 
   updateSubmitPrice();
+
+  // Reset Form & Preview Function
+  function resetFormAndPreview() {
+    if (nameInput) nameInput.value = '';
+    if (roleInput) roleInput.value = '';
+    if (companyInput) companyInput.value = '';
+    const emailInput = document.getElementById('inputEmail');
+    if (emailInput) emailInput.value = '';
+    const phoneInput = document.getElementById('inputPhone');
+    if (phoneInput) phoneInput.value = '';
+    const addressInput = document.getElementById('inputAddress');
+    if (addressInput) addressInput.value = '';
+
+    if (cardName) cardName.textContent = DEFAULT_NAME;
+    if (cardRole) cardRole.textContent = DEFAULT_ROLE;
+    if (cardCompany) cardCompany.textContent = DEFAULT_COMPANY;
+
+    // Reset material to Classic PVC (₹300)
+    materialBtns.forEach(b => b.classList.remove('active'));
+    const defaultMatBtn = document.querySelector('.material-btn[data-mat="classic-pvc"]');
+    if (defaultMatBtn) {
+      defaultMatBtn.classList.add('active');
+    }
+    card3d.setAttribute('data-material', 'classic-pvc');
+    card3d.classList.remove('flipped');
+    updateSubmitPrice();
+  }
+
+  // Clear Form Button Click
+  if (resetBtn) {
+    resetBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      resetFormAndPreview();
+    });
+  }
+
+  // App Success Modal Handler
+  const successModal = document.getElementById('orderSuccessModal');
+  const closeModalBtn = document.getElementById('closeOrderModalBtn');
+  const summaryBox = document.getElementById('orderSummaryBox');
+
+  function showSuccessModal(name, role, company, finishText, email, phone) {
+    if (!successModal) return;
+    if (summaryBox) {
+      summaryBox.innerHTML = `
+        <div style="text-align: left; font-size: 0.88rem; line-height: 1.6; color: var(--text-main);">
+          <p style="margin-bottom: 0.35rem;"><strong>Customer Name:</strong> ${name}</p>
+          ${role ? `<p style="margin-bottom: 0.35rem;"><strong>Designation:</strong> ${role}</p>` : ''}
+          ${company ? `<p style="margin-bottom: 0.35rem;"><strong>Company:</strong> ${company}</p>` : ''}
+          <p style="margin-bottom: 0.35rem;"><strong>Card Finish:</strong> <span style="color: var(--accent-cyan); font-weight: 700;">${finishText}</span></p>
+          ${email ? `<p style="margin-bottom: 0.35rem;"><strong>Email:</strong> ${email}</p>` : ''}
+          ${phone ? `<p style="margin-bottom: 0.35rem;"><strong>Phone/WhatsApp:</strong> ${phone}</p>` : ''}
+        </div>
+      `;
+    }
+    successModal.classList.add('active');
+  }
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+      if (successModal) successModal.classList.remove('active');
+      resetFormAndPreview();
+    });
+  }
+
+  if (successModal) {
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.remove('active');
+        resetFormAndPreview();
+      }
+    });
+  }
 
   // Submit Card Order Button Handler (Google Form Integration)
   if (submitBtn) {
@@ -247,25 +325,8 @@ function initCardCustomizer() {
       const selectedMatBtn = document.querySelector('.material-btn.active');
       const finishText = selectedMatBtn ? selectedMatBtn.textContent.trim() : 'Classic PVC (₹300)';
 
-      // Google Form Entry Mapping:
-      // entry.1274786449 -> Full Name
-      // entry.546882646  -> Job Title / Designation
-      // entry.2037005705 -> Company / Brand Name
-      // entry.19666781   -> Email Address
-      // entry.76794006   -> Phone / WhatsApp Number
-      // entry.239897770  -> Delivery Shipping Address
-      // entry.309807849  -> Material Finish / Price
       const formId = '1FAIpQLScyRO4jVOfS2HoQg1iRjGeIJQARl2Z5jXUPWas_MslEOhETAA';
       const formResponseUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
-      
-      const prefillUrl = `https://docs.google.com/forms/d/e/${formId}/viewform?usp=pp_url` +
-        `&entry.1274786449=${encodeURIComponent(name)}` +
-        `&entry.546882646=${encodeURIComponent(role)}` +
-        `&entry.2037005705=${encodeURIComponent(company)}` +
-        `&entry.19666781=${encodeURIComponent(email)}` +
-        `&entry.76794006=${encodeURIComponent(phone)}` +
-        `&entry.239897770=${encodeURIComponent(address)}` +
-        `&entry.309807849=${encodeURIComponent(finishText)}`;
 
       // Post entries directly to Google Form Response
       const formData = new FormData();
@@ -289,14 +350,13 @@ function initCardCustomizer() {
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
 
-        alert(`✅ Order Submitted Successfully!\n\nThank you, ${name}.\nYour order details for "${finishText}" have been captured in our Google Form system.\n\nOpening your pre-filled confirmation form...`);
-        window.open(prefillUrl, '_blank');
+        showSuccessModal(name, role, company, finishText, email, phone);
       }).catch((err) => {
         console.error('Submit error:', err);
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
 
-        window.open(prefillUrl, '_blank');
+        showSuccessModal(name, role, company, finishText, email, phone);
       });
     });
   }
