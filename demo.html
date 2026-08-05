@@ -66,13 +66,36 @@
         <h2>Start building identity infrastructure today.</h2>
         <p class="cta-subtitle">Join enterprises already running on TapDID.</p>
 
-        <form class="demo-form"
-          onsubmit="event.preventDefault(); alert('Thank you! Your enterprise demo request has been submitted successfully.');">
-          <input type="email" class="demo-input" placeholder="Enter your work email" required />
-          <button type="submit" class="btn btn-primary btn-glow">Request Demo</button>
-        </form>
+        <div id="demoFormContainer">
+          <form id="demoForm" class="demo-form-vertical" novalidate>
+            <div class="form-group">
+              <input type="text" id="demoFullName" name="entry.657327585" class="demo-input" placeholder="Full Name (Optional)" />
+            </div>
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <input type="email" id="demoEmail" name="entry.139795662" class="demo-input" placeholder="Work Email Address" />
+              </div>
+              <div class="form-group flex-1">
+                <input type="tel" id="demoPhone" name="entry.1525082777" class="demo-input" placeholder="Phone Number (e.g. +91 90000 35869)" />
+              </div>
+            </div>
 
-        <p class="demo-subtext">No credit card required. Enterprise plans available.</p>
+            <div id="demoFormError" class="demo-error-msg" style="display: none;"></div>
+
+            <button type="submit" id="demoSubmitBtn" class="btn btn-primary btn-glow btn-full">
+              <span>Request Demo</span>
+            </button>
+          </form>
+
+          <div id="demoFormSuccess" class="demo-success-card" style="display: none;">
+            <div class="success-icon">✓</div>
+            <h3>Demo Request Submitted!</h3>
+            <p id="demoSuccessText">Thank you! Our enterprise team will get in touch with you shortly.</p>
+            <button type="button" id="demoResetBtn" class="btn btn-primary btn-glow" style="margin-top: 1.25rem;">Submit Another Request</button>
+          </div>
+        </div>
+
+        <p class="demo-subtext" style="margin-top: 1rem;">* Full Name is optional. Either Email or Phone Number is required to submit request.</p>
       </div>
     </div>
   </section>
@@ -114,8 +137,8 @@
                 style="color: var(--text-main);">+91 90000 35869</a></li>
             <li style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp: <a href="https://wa.me/918186035869"
                 target="_blank" rel="noopener noreferrer" style="color: var(--accent-mint);">+91 8186 035869</a></li>
-            <li style="color: var(--text-muted); font-size: 0.9rem;">Email: <a href="mailto:support@tapdid.com"
-                style="color: var(--accent-cyan);">support@tapdid.com</a></li>
+            <li style="color: var(--text-muted); font-size: 0.9rem;">Email: <a href="mailto:sales@tapdid.com"
+                style="color: var(--accent-cyan);">sales@tapdid.com</a></li>
             <li style="color: var(--text-muted); font-size: 0.9rem;">Website: <a href="https://www.tapdid.com"
                 target="_blank" rel="noopener noreferrer" style="color: var(--brand-blue);">www.tapdid.com</a></li>
           </ul>
