@@ -227,6 +227,21 @@ h6 {
   transform: translateY(-2px);
 }
 
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #25D366 !important;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #20bd5a 0%, #0e786c 100%) !important;
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.65) !important;
+  transform: translateY(-2px);
+  color: #ffffff !important;
+}
+
 .btn-glow {
   position: relative;
 }
@@ -310,7 +325,7 @@ h6 {
 
 [data-theme="dark"] #mainLogo,
 [data-theme="dark"] #footerLogo {
-  content: url('assets/tapdid_h_dark.png');
+  content: url('assets/logo_h_dark.png');
 }
 
 [data-theme="light"] #mainLogo,
@@ -562,6 +577,24 @@ h6 {
   color: #ffffff;
 }
 
+.nfc-card-3d[data-material="google-review"] .card-face {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 60%, #4285f4 100%);
+  border-color: rgba(234, 67, 53, 0.6);
+  color: #ffffff;
+}
+
+.nfc-card-3d[data-material="whatsapp-lead"] .card-face {
+  background: linear-gradient(135deg, #075e54 0%, #128c7e 60%, #25d366 100%);
+  border-color: rgba(37, 211, 102, 0.6);
+  color: #ffffff;
+}
+
+.nfc-card-3d[data-material="merchant-upi"] .card-face {
+  background: linear-gradient(135deg, #1b004b 0%, #360091 60%, #0052ff 100%);
+  border-color: rgba(0, 82, 255, 0.6);
+  color: #ffffff;
+}
+
 .card-face-front {
   z-index: 2;
 }
@@ -571,6 +604,11 @@ h6 {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.card-face-back p {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .card-header-line {
@@ -634,11 +672,16 @@ h6 {
   justify-content: space-between;
 }
 
+.card-footer-line span {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
 .card-brand-logo {
   height: 34px;
   max-height: 36px;
   width: auto;
-  content: url('assets/tapdid_h_dark.png') !important;
+  content: url('assets/logo_h_dark.png') !important;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)) brightness(1.1) !important;
 }
 
@@ -2325,4 +2368,452 @@ h6 {
   border-radius: var(--radius-md);
   padding: 1.1rem 1.25rem;
   margin: 1rem 0;
+}
+
+/* ==========================================================================
+   Legal & Privacy Policy Document Styles
+   ========================================================================== */
+.policy-hero {
+  padding: 8rem 0 3.5rem 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 82, 255, 0.12) 0%, transparent 60%);
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.policy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.policy-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .policy-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.policy-sidebar {
+  position: sticky;
+  top: 6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+}
+
+.policy-sidebar-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.policy-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.policy-nav a {
+  display: block;
+  padding: 0.55rem 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.policy-nav a:hover,
+.policy-nav a.active {
+  color: var(--accent-cyan);
+  background: rgba(0, 242, 254, 0.08);
+}
+
+.policy-content-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.policy-content-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.policy-content-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.policy-content-card p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.98rem;
+  margin-bottom: 1rem;
+}
+
+.policy-content-card p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-list-numbered {
+  list-style: none;
+  counter-reset: policy-counter;
+  padding: 0;
+  margin: 1.25rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.policy-list-numbered li {
+  counter-increment: policy-counter;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem 1rem 3.2rem;
+  position: relative;
+  font-size: 0.93rem;
+  color: var(--text-main);
+  line-height: 1.55;
+}
+
+.policy-list-numbered li::before {
+  content: counter(policy-counter);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.policy-highlight-box {
+  background: rgba(0, 82, 255, 0.06);
+  border-left: 4px solid var(--brand-blue);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+/* ==========================================================================
+   NFC Cards Gallery & Showroom Component
+   ========================================================================== */
+.gallery-section {
+  padding: 6rem 0;
+  background: radial-gradient(circle at 50% 30%, rgba(0, 82, 255, 0.08) 0%, transparent 70%);
+  position: relative;
+}
+
+.gallery-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.gallery-filter-btn {
+  padding: 0.55rem 1.35rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+  background: var(--accent-gradient);
+  color: #ffffff !important;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(0, 242, 254, 0.4);
+  transform: translateY(-2px);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-card-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-card-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 16px 36px rgba(0, 82, 255, 0.25), 0 0 20px rgba(0, 242, 254, 0.15);
+}
+
+.gallery-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.gallery-card-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-google {
+  background: rgba(234, 67, 53, 0.12);
+  color: #ea4335;
+  border: 1px solid rgba(234, 67, 53, 0.3);
+}
+
+.badge-whatsapp {
+  background: rgba(37, 211, 102, 0.12);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.badge-personal {
+  background: rgba(255, 215, 0, 0.12);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.badge-employee {
+  background: rgba(0, 242, 254, 0.12);
+  color: #00f2fe;
+  border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.badge-business {
+  background: rgba(0, 82, 255, 0.12);
+  color: #0052ff;
+  border: 1px solid rgba(0, 82, 255, 0.3);
+}
+
+.badge-asset {
+  background: rgba(255, 153, 0, 0.12);
+  color: #ff9900;
+  border: 1px solid rgba(255, 153, 0, 0.3);
+}
+
+.badge-student {
+  background: rgba(153, 51, 255, 0.12);
+  color: #9933ff;
+  border: 1px solid rgba(153, 51, 255, 0.3);
+}
+
+.badge-medical {
+  background: rgba(255, 45, 85, 0.12);
+  color: #ff2d55;
+  border: 1px solid rgba(255, 45, 85, 0.3);
+}
+
+/* Double-Sided 3D Card Flip Showroom */
+.gallery-flip-container {
+  width: 100%;
+  height: 195px;
+  perspective: 1000px;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+}
+
+.gallery-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.gallery-flip-container:hover .gallery-flip-inner,
+.gallery-flip-container.flipped .gallery-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.gallery-flip-front,
+.gallery-flip-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.gallery-flip-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #090e17 0%, #151e2e 100%);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0.85rem;
+}
+
+/* Card Mockup Themes */
+.card-theme-google {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 60%, #4285f4 100%);
+  color: #ffffff;
+}
+
+.card-theme-whatsapp {
+  background: linear-gradient(135deg, #075e54 0%, #128c7e 60%, #25d366 100%);
+  color: #ffffff;
+}
+
+.card-theme-gold {
+  background: linear-gradient(135deg, #2c2512 0%, #4a3e1c 50%, #1f1909 100%);
+  border: 1px solid #ffd700;
+  color: #ffffff;
+}
+
+.card-theme-corporate {
+  background: linear-gradient(135deg, #0a192f 0%, #172a45 60%, #203a61 100%);
+  color: #ffffff;
+}
+
+.card-theme-merchant {
+  background: linear-gradient(135deg, #1b004b 0%, #360091 60%, #0052ff 100%);
+  color: #ffffff;
+}
+
+.card-theme-asset {
+  background: linear-gradient(135deg, #1c1d22 0%, #2b2d35 60%, #3a3d47 100%);
+  border: 1px solid #ff9900;
+  color: #ffffff;
+}
+
+.card-theme-student {
+  background: linear-gradient(135deg, #300032 0%, #5c0067 60%, #9933ff 100%);
+  color: #ffffff;
+}
+
+.card-theme-medical {
+  background: linear-gradient(135deg, #4a0010 0%, #8b0021 60%, #ff2d55 100%);
+  color: #ffffff;
+}
+
+.card-theme-realestate {
+  background: linear-gradient(135deg, #002b20 0%, #004d38 60%, #00a86b 100%);
+  color: #ffffff;
+}
+
+.card-theme-event {
+  background: linear-gradient(135deg, #2a004e 0%, #57008a 60%, #00f2fe 100%);
+  color: #ffffff;
+}
+
+.gallery-card-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-main);
+}
+
+.gallery-card-content p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.gallery-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gallery-card-features li {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gallery-card-features li::before {
+  content: '✓';
+  color: var(--accent-mint);
+  font-weight: 800;
+}
+
+.gallery-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
 }

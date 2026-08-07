@@ -163,8 +163,516 @@
                 </svg> Zoho / Hubspot / Salesforce Integration</li>
             </ul>
           </div>
-          <a href="https://wa.me/918186035869?text=Hi%20TapDID%20Team,%20I'm%20interested%20in%20the%20Corporate%20Enterprise%20Plan." target="_blank" class="btn btn-secondary">Contact Enterprise Sales (+91 8186 035869)</a>
+          <a href="https://wa.me/918186035869?text=Hi%20TapDID%20Team,%20I'm%20interested%20in%20the%20Corporate%20Enterprise%20Plan." target="_blank" class="btn btn-whatsapp">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 0.4rem; vertical-align: -3px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Contact Sales (+91 8186 035869)
+          </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Double-Sided 3D NFC Cards Showroom & Gallery Section -->
+  <section id="card-gallery" class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Double-Sided 3D Smart Card Showroom</div>
+        <h2 class="section-title">TapDID Smart Card Gallery</h2>
+        <p class="section-subtitle">Explore front &amp; back 3D card designs tailored for Google Reviews, WhatsApp Lead Generation, Corporate IDs, Asset Tracking, Emergency Medical, and Student Access. <em>(Hover or tap any card to flip sides!)</em></p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="gallery-filters">
+        <button class="gallery-filter-btn active" onclick="filterGallery('all', this)">All Cards (10)</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('business', this)">Business &amp; Growth</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('identity', this)">Identity &amp; Corporate</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('specialized', this)">Specialized &amp; Assets</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+
+        <!-- Card 1: Google Review Tap Card -->
+        <div class="gallery-card-item" data-category="business">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-google">⭐ Google Reviews</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-cyan);">1-Tap Review</span>
+          </div>
+
+          <!-- Double Sided 3D Flip Container -->
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-google">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">Google 5★ Review Tap</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">1-Tap Customer Review</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">Tap to Rate Us on Google</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: var(--accent-cyan); font-weight: 700;">NFC + QR</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR or Tap NFC for Review</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Google Review Tap Card</h3>
+            <p>Designed for restaurants, clinics, retail stores &amp; salons to turn happy customers into instant 5-star Google reviews.</p>
+            <ul class="gallery-card-features">
+              <li>Direct 1-tap Google Maps review popup</li>
+              <li>Zero app or download required for customers</li>
+              <li>Dynamic URL editing without re-printing</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 2: WhatsApp Business Tap Card -->
+        <div class="gallery-card-item" data-category="business">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-whatsapp">💬 Lead Capture</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #25D366;">Instant Chat</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-whatsapp">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">WhatsApp Business</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">Auto Greeting Chat</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">Tap to Chat &amp; Catalog</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #25D366; font-weight: 700;">WHATSAPP LINK</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/918186035869" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR to Chat on WhatsApp</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>WhatsApp Business Tap Card</h3>
+            <p>Opens a pre-filled WhatsApp chat conversation with product catalog, catalog link, and automated welcome message.</p>
+            <ul class="gallery-card-features">
+              <li>Pre-filled custom greeting message</li>
+              <li>Includes WhatsApp Business Catalog link</li>
+              <li>High conversion rate for sales reps</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Personal VCard (24K Gold Finish) -->
+        <div class="gallery-card-item" data-category="identity">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-personal">🏆 Premium VCard</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #ffd700;">24K Gold / Matte</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-gold">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem; color: #ffd700;">Executive VCard</span>
+                  <div style="width: 20px; height: 14px; background: linear-gradient(135deg, #ffd700 0%, #cca100 100%); border-radius: 3px;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; color: #e5c158;">Save Contact VCF</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem; color: #ffffff;">Rohan Sharma | CEO</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.5); color: #ffd700; padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #ffd700; font-weight: 700;">VCF PROFILE</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR to Save VCF Contact</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Personal Executive VCard</h3>
+            <p>Luxury 24K Gold or Matte Finish smart visiting card that shares your complete profile, bio, VCF &amp; social handles.</p>
+            <ul class="gallery-card-features">
+              <li>1-tap contact VCF save directly to phonebook</li>
+              <li>Social media links &amp; interactive portfolio</li>
+              <li>Replaces thousands of paper visiting cards</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 4: Employee & Corporate ID Card -->
+        <div class="gallery-card-item" data-category="identity">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-employee">🏢 Enterprise ID</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #00f2fe;">Dual-Chip Access</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-corporate">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">Corporate ID</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">Employee Credential</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">Apex Innovations Pvt Ltd</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #00f2fe; font-weight: 700;">EMPLOYEE VERIFIED</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan to Verify Identity &amp; Access</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Employee &amp; Corporate ID Card</h3>
+            <p>Unified enterprise ID for door access control, identity verification, employee directory &amp; team management.</p>
+            <ul class="gallery-card-features">
+              <li>Compatible with RFID door access locks</li>
+              <li>Centralized admin dashboard controls</li>
+              <li>Encrypted employee credential verification</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 5: Business & Merchant UPI Card -->
+        <div class="gallery-card-item" data-category="business">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-business">💳 Storefront &amp; UPI</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #0052ff;">Instant Payment</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-merchant">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">Merchant UPI Card</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M21 4H3c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H3V12h18v6zm0-10H3V6h18v2z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">GPay / PhonePe / Paytm</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">Tap to Pay &amp; View Catalog</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #0052ff; font-weight: 700;">UPI QR INTEGRATED</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=sales@upi" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan UPI QR to Pay Directly</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Business &amp; Merchant Payment Card</h3>
+            <p>All-in-one payment &amp; storefront card. Tap to pay via dynamic UPI QR code, view digital menu &amp; save store location.</p>
+            <ul class="gallery-card-features">
+              <li>Integrated UPI payment gateway link</li>
+              <li>Digital product catalog &amp; menu showcase</li>
+              <li>Google Maps store directions on tap</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 6: Asset & Equipment Tag -->
+        <div class="gallery-card-item" data-category="specialized">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-asset">🏷️ Asset Tracking</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #ff9900;">Rugged NFC Tag</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-asset">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem; color: #ff9900;">Asset Tag</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; color: #ffaa22;">Equipment Log History</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem; color: #ffffff;">Asset ID: #DID-8842</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.5); color: #ffaa22; padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #ff9900; font-weight: 700;">INVENTORY LOG</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan for Service Logs &amp; Warranty</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Asset &amp; Equipment Smart Tag</h3>
+            <p>Industrial-grade NFC tag/card for fixed asset tracking, maintenance log inspection, warranty lookup &amp; service calls.</p>
+            <ul class="gallery-card-features">
+              <li>Waterproof, heat-resistant carbon casing</li>
+              <li>Real-time maintenance log inspection</li>
+              <li>Encrypted tamper-proof asset signature</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 7: Student & Campus ID Card -->
+        <div class="gallery-card-item" data-category="identity">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-student">🎓 Campus Smart ID</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #9933ff;">University Card</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-student">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">Student ID</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">Gate Entry &amp; Library Pass</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">Oxford University Campus</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #9933ff; font-weight: 700;">CAMPUS VERIFIED</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan for Library &amp; Canteen Pass</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Student &amp; Campus Smart ID</h3>
+            <p>Unified university student ID enabling hostel entrance, library book borrowing, and cashless canteen UPI payments.</p>
+            <ul class="gallery-card-features">
+              <li>Turnstile &amp; gate access integration</li>
+              <li>Library RFID book checkout capability</li>
+              <li>Cashless canteen UPI balance tap</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 8: Healthcare & Emergency Medical Card -->
+        <div class="gallery-card-item" data-category="specialized">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-medical">🚑 Emergency ICE</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #ff2d55;">Life-Saving Card</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-medical">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">Medical ICE ID</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">Blood Group O+ | Emergency</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">ICE: Call +91 90000 35869</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #ff2d55; font-weight: 700;">EMERGENCY DATA</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=tel:+919000035869" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR for Medical Notes &amp; Allergies</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Healthcare &amp; Emergency Medical Card</h3>
+            <p>Life-saving NFC card displaying blood group, emergency ICE contacts, allergies, medical insurance &amp; doctor notes.</p>
+            <ul class="gallery-card-features">
+              <li>Instant 1-tap call to emergency contact</li>
+              <li>Encrypted medical history &amp; allergies</li>
+              <li>Vital for elderly, riders, &amp; travelers</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 9: Real Estate & Property Tour Card -->
+        <div class="gallery-card-item" data-category="business">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-business">🏡 Property Tour</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #00a86b;">3D Virtual View</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-realestate">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">Property Pass</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">Virtual 3D Walkthrough</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">Tap to Experience Tour</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #00a86b; font-weight: 700;">3D TOUR TOUR</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan to View Floor Plans &amp; Pricing</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Real Estate &amp; Property Tour Card</h3>
+            <p>Tap to open immersive 3D property walkthroughs, floor plans, price sheets, and direct agent WhatsApp connection.</p>
+            <ul class="gallery-card-features">
+              <li>Instant 3D virtual tour video launch</li>
+              <li>Downloadable PDF brochure on tap</li>
+              <li>Direct WhatsApp broker appointment booking</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
+        <!-- Card 10: Event & VIP Access Pass -->
+        <div class="gallery-card-item" data-category="specialized">
+          <div class="gallery-card-header">
+            <span class="gallery-card-badge badge-student">🎟️ VIP Event Pass</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: #00f2fe;">Conference Badge</span>
+          </div>
+          <div class="gallery-flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="gallery-flip-inner">
+              <div class="gallery-flip-front card-theme-event">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 1.05rem;">VIP Event Pass</span>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-5h2v5z"/></svg>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">Contactless Check-In Pass</div>
+                    <div style="font-weight: 700; font-size: 0.92rem; margin-top: 0.15rem;">Global Tech Summit 2026</div>
+                  </div>
+                  <span style="font-size: 0.72rem; opacity: 0.85; background: rgba(0,0,0,0.3); padding: 0.2rem 0.5rem; border-radius: 4px;">Flip 🔄</span>
+                </div>
+              </div>
+              <div class="gallery-flip-back">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  <img src="assets/logo_h_dark.png" alt="TapDID Logo" style="height: 20px;">
+                  <span style="font-size: 0.72rem; color: #00f2fe; font-weight: 700;">VIP DELEGATE</span>
+                </div>
+                <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com" alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
+                </div>
+                <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan at Entrance &amp; VIP Lounge</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-card-content">
+            <h3>Event &amp; VIP Access Pass</h3>
+            <p>NFC VIP event badge for fast contactless check-in, VIP lounge access, speaker schedule, and lead exchange.</p>
+            <ul class="gallery-card-features">
+              <li>Contactless badge scanning at gate</li>
+              <li>Live conference schedule &amp; speaker links</li>
+              <li>Networking lead capture between attendees</li>
+            </ul>
+          </div>
+          <div class="gallery-card-actions">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow" style="flex: 1; text-align: center; font-size: 0.88rem; padding: 0.55rem 0.85rem;">Order This Card (₹300)</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -239,9 +747,10 @@
         <div class="footer-column">
           <h4>Legal</h4>
           <ul class="footer-links">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Security &amp; Encryption</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="refund-policy.html">Refund Policy</a></li>
+            <li><a href="security-and-encryption.html">Security &amp; Encryption</a></li>
           </ul>
         </div>
         <div class="footer-column">

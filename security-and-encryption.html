@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('tapdid_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security &amp; Encryption Standards — TapDID Identity Platform</title>
+  <meta name="description"
+    content="Discover TapDID's enterprise-grade Security & Encryption standards. AES-256 NFC chip protection, TLS 1.3 transmission encryption, DPDP Act 2023 compliance, and secure cloud infrastructure.">
+  <meta name="keywords"
+    content="TapDID Security, AES-256 NFC Encryption, TLS 1.3, DPDP Act 2023, Secure Digital Identity, DeccanIDentity Security">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <img id="mainLogo" src="assets/logo_h_nobg.png" alt="TapDID Logo" class="logo-img">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+          <li><a href="scenarios.html" class="nav-link">Scenarios</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing (₹)</a></li>
+          <li><a href="card-studio.html" class="nav-link">NFC Cards</a></li>
+          <li><a href="demo.html" class="nav-link">Demo</a></li>
+          <li class="mobile-cta-item">
+            <a href="card-studio.html#customizer" class="btn btn-primary btn-glow mobile-nav-cta">Order Card (₹300)</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+          <span id="themeIcon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </span>
+        </button>
+        <a href="card-studio.html#customizer" class="btn btn-primary btn-glow desktop-only-btn">Order Card (₹300)</a>
+        <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="policy-hero">
+    <div class="container">
+      <div class="policy-badge">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        Military-Grade Architecture &amp; Data Defense
+      </div>
+      <h1 class="section-title" style="font-size: 2.8rem; margin-bottom: 0.75rem;">Security &amp; Encryption Standards</h1>
+      <p class="section-subtitle" style="margin: 0 auto; max-width: 650px;">
+        At <strong>TapDID</strong> (operated by DeccanIDentity), security is built into every layer—from hardware NFC chip locking to TLS 1.3 transit encryption and DPDP Act 2023 compliance.
+      </p>
+      <div style="margin-top: 1rem; color: var(--text-muted); font-size: 0.88rem; font-weight: 600;">
+        Last Updated: August 2026 | Version 3.4
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="container">
+    <div class="policy-layout">
+
+      <!-- Navigation Sidebar -->
+      <aside class="policy-sidebar">
+        <div class="policy-sidebar-title">Security Navigation</div>
+        <nav class="policy-nav">
+          <a href="#overview">1. Security Architecture</a>
+          <a href="#hardware">2. NFC Hardware Security</a>
+          <a href="#transit">3. Data in Transit (TLS 1.3)</a>
+          <a href="#at-rest">4. Data at Rest (AES-256)</a>
+          <a href="#qr-security">5. Dynamic QR Integrity</a>
+          <a href="#compliance">6. DPDP &amp; Legal Compliance</a>
+          <a href="#infrastructure">7. Cloud &amp; DDoS Defense</a>
+          <a href="#incident-response">8. Vulnerability Reporting</a>
+        </nav>
+      </aside>
+
+      <!-- Security Content Cards -->
+      <div class="policy-content">
+
+        <!-- 1. Security Overview -->
+        <article id="overview" class="policy-content-card">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--accent-cyan)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            1. Security Architecture Overview
+          </h2>
+          <p>
+            The <strong>TapDID Identity Platform</strong> is designed with a defense-in-depth framework. Whether an individual taps a smart card, scans a dynamic QR code, or manages profile details via our web portal, all interactions are secured using zero-trust cryptographic protocols.
+          </p>
+          <div class="policy-highlight-box">
+            <p style="margin: 0; font-size: 0.94rem; color: var(--text-main);">
+              <strong>Zero-Trust Guarantee:</strong> We never store plain-text credentials, financial PINs, or raw bank details. All sensitive user data is tokenized and stored in encrypted vaults backed by hardware security modules (HSM).
+            </p>
+          </div>
+        </article>
+
+        <!-- 2. NFC Hardware Security -->
+        <article id="hardware" class="policy-content-card">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--brand-blue)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457-.315-2.84-.873-4.088" />
+            </svg>
+            2. Smart NFC Chip Security &amp; Anti-Cloning
+          </h2>
+          <p>
+            TapDID utilizes genuine High-Grade NXP NTAG215 / NTAG216 NFC IC microchips embedded inside our PVC, Bamboo, Matte Metal, and 24K Gold cards.
+          </p>
+          <ol class="policy-list-numbered">
+            <li><strong>Password Lock Protection:</strong> Every TapDID card chip is permanently write-locked with a unique 32-bit hardware password key to prevent unauthorized chip tampering or overwriting.</li>
+            <li><strong>7-Byte Unique ID (UID):</strong> Each IC features an immutable, factory-programmed 7-byte UID that acts as an unforgeable physical signature.</li>
+            <li><strong>Anti-Cloning Integrity:</strong> Duplicate or cloned NFC chips are automatically detected and blocked by our cloud authentication servers upon tap.</li>
+          </ol>
+        </article>
+
+        <!-- 3. Data in Transit (TLS 1.3) -->
+        <article id="transit" class="policy-content-card">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--accent-cyan)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+            3. Data in Transit Encryption (TLS 1.3 &amp; HTTPS)
+          </h2>
+          <p>
+            All web communications between your browser, phone tap, and TapDID servers are encrypted in transit using <strong>Transport Layer Security (TLS 1.3)</strong> and 256-bit SSL certificates.
+          </p>
+          <ul style="margin: 0.75rem 0 1rem 1.5rem; color: var(--text-muted); line-height: 1.7;">
+            <li><strong>HSTS Enforcement:</strong> HTTP Strict Transport Security (HSTS) is enabled to force secure HTTPS connections exclusively.</li>
+            <li><strong>PFS (Perfect Forward Secrecy):</strong> Session keys are ephemeral, ensuring that even if a future key were compromised, past encrypted sessions remain secure.</li>
+          </ul>
+        </article>
+
+        <!-- 4. Data at Rest (AES-256) -->
+        <article id="at-rest" class="policy-content-card">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--accent-mint)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+            </svg>
+            4. Data at Rest Encryption (AES-256-GCM)
+          </h2>
+          <p>
+            User profile database records, VCF contact details, custom card design parameters, and account settings are encrypted at rest using <strong>AES-256-GCM</strong> (Advanced Encryption Standard).
+          </p>
+          <p>
+            Passwords and authentication credentials are hashed using key-stretching functions (Argon2id / bcrypt) with individual cryptographic salts.
+          </p>
+        </article>
+
+        <!-- 5. Dynamic QR Code Integrity -->
+        <article id="qr-security" class="policy-content-card">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--accent-gold)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+            </svg>
+            5. Dynamic QR Code Integrity &amp; Anti-Tampering
+          </h2>
+          <p>
+            TapDID dynamic QR codes and UPI payment links undergo continuous payload validation to prevent URL redirection attacks, phishing, or unauthorized payment link hijacking.
+          </p>
+          <ul style="margin: 0.75rem 0 1rem 1.5rem; color: var(--text-muted); line-height: 1.7;">
+            <li><strong>Dynamic Link Sanitization:</strong> All user-configured destination links are scanned against global malicious URL blacklists before activation.</li>
+            <li><strong>Real-time Toggle:</strong> Profile owners can instantly lock, disable, or redirect their NFC card profile in real-time if their physical card is lost or stolen.</li>
+          </ul>
+        </article>
+
+        <!-- 6. DPDP Act 2023 & Legal Compliance -->
+        <article id="compliance" class="policy-content-card">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--accent-purple)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+            </svg>
+            6. Regulatory Compliance &amp; DPDP Act 2023
+          </h2>
+          <p>
+            TapDID strictly adheres to the <strong>Digital Personal Data Protection (DPDP) Act 2023</strong> of India, Information Technology Act 2000 (Section 43A), and international data privacy principles.
+          </p>
+          <div style="background: var(--bg-secondary); padding: 1.25rem; border-radius: var(--radius-md); margin-top: 1rem; border: 1px solid var(--border-color);">
+            <ul style="margin: 0; padding-left: 1.25rem; color: var(--text-muted); line-height: 1.7;">
+              <li><strong>Data Minimization:</strong> We only collect data required to render your digital profile and process card orders.</li>
+              <li><strong>Right to Erase:</strong> Users hold full authority to wipe their profile data permanently from our servers at any time.</li>
+              <li><strong>Data Sovereignty:</strong> Indian user data is hosted within secure tier-4 Indian cloud datacenters.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 7. Cloud Infrastructure & DDoS Defense -->
+        <article id="infrastructure" class="policy-content-card">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--accent-cyan)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            7. Cloud Infrastructure &amp; DDoS Protection
+          </h2>
+          <p>
+            Our web servers operate behind Cloudflare Enterprise Web Application Firewalls (WAF) providing real-time mitigation against Distributed Denial of Service (DDoS) attacks, automated bot abuse, and SQL injection attempts.
+          </p>
+          <p>
+            Automated daily encrypted backups and multi-region failover ensure <strong>99.99% service availability</strong>.
+          </p>
+        </article>
+
+        <!-- 8. Vulnerability Reporting -->
+        <article id="incident-response" class="policy-content-card" style="border-color: var(--accent-cyan);">
+          <h2>
+            <svg width="22" height="22" fill="none" stroke="var(--accent-mint)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+            8. Vulnerability Reporting &amp; Security Support
+          </h2>
+          <p>
+            We welcome responsible security research. If you discover a security vulnerability or have questions about our encryption standards, please contact our security desk:
+          </p>
+          <div style="background: var(--bg-secondary); padding: 1.25rem; border-radius: var(--radius-md); margin-top: 1rem; border: 1px solid var(--border-color);">
+            <p style="margin: 0 0 0.5rem 0;"><strong>Security Team:</strong> DeccanIDentity / TapDID Security</p>
+            <p style="margin: 0 0 0.5rem 0;"><strong>Email:</strong> <a href="mailto:sales@tapdid.com" style="color: var(--accent-cyan);">sales@tapdid.com</a></p>
+            <p style="margin: 0 0 0.5rem 0;"><strong>WhatsApp Security Support:</strong> <a href="https://wa.me/918186035869" target="_blank" rel="noopener noreferrer" style="color: var(--accent-mint);">+91 8186 035869</a></p>
+            <p style="margin: 0;"><strong>Official Domain:</strong> <a href="https://www.tapdid.com" target="_blank" rel="noopener noreferrer" style="color: var(--brand-blue);">www.tapdid.com</a></p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo-link">
+            <img id="footerLogo" src="assets/logo_h_nobg.png" alt="TapDID Logo" class="footer-logo-img">
+          </a>
+          <p>TapDID — The Digital Identity Platform connecting people, businesses, and assets through NFC (Near Field
+            Communication), QR codes, AI, and secure cloud services.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="technologies.html">Technologies</a></li>
+            <li><a href="scenarios.html">Scenarios</a></li>
+            <li><a href="pricing.html">Pricing (₹)</a></li>
+            <li><a href="card-studio.html">NFC Cards</a></li>
+            <li><a href="demo.html">Request Demo</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="refund-policy.html">Refund Policy</a></li>
+            <li><a href="security-and-encryption.html">Security &amp; Encryption</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact &amp; Support</h4>
+          <ul class="footer-links">
+            <li style="color: var(--text-muted); font-size: 0.9rem;">Contact: <a href="tel:+919000035869"
+                style="color: var(--text-main);">+91 90000 35869</a></li>
+            <li style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp: <a href="https://wa.me/918186035869"
+                target="_blank" rel="noopener noreferrer" style="color: var(--accent-mint);">+91 8186 035869</a></li>
+            <li style="color: var(--text-muted); font-size: 0.9rem;">Email: <a href="mailto:sales@tapdid.com"
+                style="color: var(--accent-cyan);">sales@tapdid.com</a></li>
+            <li style="color: var(--text-muted); font-size: 0.9rem;">Website: <a href="https://www.tapdid.com"
+                target="_blank" rel="noopener noreferrer" style="color: var(--brand-blue);">www.tapdid.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 TapDID. All rights reserved. by <a href="https://www.deccanidentity.com" target="_blank"
+          rel="noopener noreferrer" style="color: var(--accent-cyan); text-decoration: underline;">DeccanIDentity</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

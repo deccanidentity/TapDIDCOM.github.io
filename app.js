@@ -125,7 +125,7 @@ function updateThemeIcon(theme) {
     }
   }
 
-  const logoSrc = theme === 'dark' ? 'assets/tapdid_h_dark.png' : 'assets/logo_h_nobg.png';
+  const logoSrc = theme === 'dark' ? 'assets/logo_h_dark.png' : 'assets/logo_h_nobg.png';
   if (mainLogo && !mainLogo.src.endsWith(logoSrc)) mainLogo.src = logoSrc;
   if (footerLogo && !footerLogo.src.endsWith(logoSrc)) footerLogo.src = logoSrc;
 }
@@ -789,5 +789,23 @@ function initDemoForm() {
       if (form) form.style.display = 'flex';
     });
   }
+}
+
+/* ==========================================================================
+   NFC Cards Gallery Category Filter
+   ========================================================================== */
+function filterGallery(category, btnElement) {
+  const buttons = document.querySelectorAll('.gallery-filter-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+
+  const items = document.querySelectorAll('.gallery-card-item');
+  items.forEach(item => {
+    if (category === 'all' || item.getAttribute('data-category') === category) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
 }
 
