@@ -98,7 +98,7 @@ function initMobileNav() {
 function initThemeToggle() {
   const themeBtn = document.getElementById('themeToggle');
   const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('tapdid_theme') || 'light';
-  
+
   updateThemeIcon(currentTheme);
 
   if (!themeBtn) return;
@@ -679,116 +679,119 @@ function initScenarioScreen() {
    Google Form Enterprise Demo Request Handler
    ========================================================================== */
 function initDemoForm() {
-  const form = document.getElementById('demoForm');
-  if (!form) return;
-
-  const fullNameInput = document.getElementById('demoFullName');
-  const emailInput = document.getElementById('demoEmail');
-  const phoneInput = document.getElementById('demoPhone');
-  const errorMsg = document.getElementById('demoFormError');
-  const submitBtn = document.getElementById('demoSubmitBtn');
-  const successCard = document.getElementById('demoFormSuccess');
-  const successText = document.getElementById('demoSuccessText');
-  const resetBtn = document.getElementById('demoResetBtn');
+  const forms = document.querySelectorAll('#demoForm, .demo-form-vertical');
+  if (!forms.length) return;
 
   const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSfxD8IlgramN5Y7iUjk82zscV3kXm6g8fKUQ1mMGCqBJa39wA/formResponse';
   const ENTRY_FULL_NAME = 'entry.657327585';
   const ENTRY_EMAIL = 'entry.139795662';
   const ENTRY_PHONE = 'entry.1525082777';
 
-  function showError(msg) {
-    if (errorMsg) {
-      errorMsg.textContent = msg;
-      errorMsg.style.display = 'block';
-    }
-  }
+  forms.forEach(form => {
+    const container = form.closest('#demoFormContainer') || form.parentElement;
+    const fullNameInput = form.querySelector('#demoFullName, [name="entry.657327585"]');
+    const emailInput = form.querySelector('#demoEmail, [name="entry.139795662"]');
+    const phoneInput = form.querySelector('#demoPhone, [name="entry.1525082777"]');
+    const errorMsg = container.querySelector('#demoFormError, .demo-error-msg');
+    const submitBtn = form.querySelector('#demoSubmitBtn, button[type="submit"]');
+    const successCard = container.querySelector('#demoFormSuccess, .demo-success-card');
+    const successText = container.querySelector('#demoSuccessText, .demo-success-text');
+    const resetBtn = container.querySelector('#demoResetBtn, .demo-reset-btn');
 
-  function hideError() {
-    if (errorMsg) {
-      errorMsg.style.display = 'none';
-      errorMsg.textContent = '';
-    }
-  }
-
-  // Clear error on input typing
-  [fullNameInput, emailInput, phoneInput].forEach(input => {
-    if (input) {
-      input.addEventListener('input', hideError);
-    }
-  });
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    hideError();
-
-    const fullName = fullNameInput ? fullNameInput.value.trim() : '';
-    const email = emailInput ? emailInput.value.trim() : '';
-    const phone = phoneInput ? phoneInput.value.trim() : '';
-
-    // Validation: Full Name is optional, but either Email OR Phone is mandatory
-    if (!email && !phone) {
-      showError('Please provide either your Work Email or Phone Number to request a demo.');
-      return;
+    function showError(msg) {
+      if (errorMsg) {
+        errorMsg.textContent = msg;
+        errorMsg.style.display = 'block';
+      }
     }
 
-    // Basic email format check if email is provided
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showError('Please enter a valid email address.');
-      return;
+    function hideError() {
+      if (errorMsg) {
+        errorMsg.style.display = 'none';
+        errorMsg.textContent = '';
+      }
     }
 
-    // Basic phone format check if phone is provided
-    if (phone && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]{6,15}$/.test(phone)) {
-      showError('Please enter a valid phone number (e.g. +91 90000 35869).');
-      return;
-    }
+    // Clear error on input typing
+    [fullNameInput, emailInput, phoneInput].forEach(input => {
+      if (input) {
+        input.addEventListener('input', hideError);
+      }
+    });
 
-    // Prepare Google Form submission payload
-    const formData = new FormData();
-    formData.append(ENTRY_FULL_NAME, fullName);
-    formData.append(ENTRY_EMAIL, email);
-    formData.append(ENTRY_PHONE, phone);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideError();
 
-    // Disable button & show spinner state
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Submitting Demo Request...</span>';
-    }
+      const fullName = fullNameInput ? fullNameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
 
-    try {
-      // POST to Google Form Response endpoint using no-cors mode
-      await fetch(GOOGLE_FORM_ACTION, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      });
-    } catch (err) {
-      console.warn('Google Form fetch submit notice:', err);
-    } finally {
-      // Show success state
-      if (form) form.style.display = 'none';
-      if (successCard) {
-        successCard.style.display = 'block';
-        if (successText) {
-          const displayName = fullName ? `, ${fullName}` : '';
-          successText.textContent = `Thank you${displayName}! Your enterprise demo request has been received. Our team will contact you shortly.`;
+      // Validation: Full Name is optional, but either Email OR Phone is mandatory
+      if (!email && !phone) {
+        showError('Please provide either your Work Email or Phone Number to request a demo.');
+        return;
+      }
+
+      // Basic email format check if email is provided
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      // Basic phone format check if phone is provided
+      if (phone && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]{6,15}$/.test(phone)) {
+        showError('Please enter a valid phone number (e.g. +91 90000 35869).');
+        return;
+      }
+
+      // Prepare Google Form submission payload
+      const formData = new FormData();
+      formData.append(ENTRY_FULL_NAME, fullName);
+      formData.append(ENTRY_EMAIL, email);
+      formData.append(ENTRY_PHONE, phone);
+
+      // Disable button & show spinner state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Submitting Demo Request...</span>';
+      }
+
+      try {
+        // POST to Google Form Response endpoint using no-cors mode
+        await fetch(GOOGLE_FORM_ACTION, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+      } catch (err) {
+        console.warn('Google Form fetch submit notice:', err);
+      } finally {
+        // Show success state
+        if (form) form.style.display = 'none';
+        if (successCard) {
+          successCard.style.display = 'block';
+          if (successText) {
+            const displayName = fullName ? `, ${fullName}` : '';
+            successText.textContent = `Thank you${displayName}! Your enterprise demo request has been received. Our team will contact you shortly.`;
+          }
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Request Demo</span>';
         }
       }
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Request Demo</span>';
-      }
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        form.reset();
+        hideError();
+        if (successCard) successCard.style.display = 'none';
+        if (form) form.style.display = 'flex';
+      });
     }
   });
-
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      form.reset();
-      hideError();
-      if (successCard) successCard.style.display = 'none';
-      if (form) form.style.display = 'flex';
-    });
-  }
 }
 
 /* ==========================================================================
