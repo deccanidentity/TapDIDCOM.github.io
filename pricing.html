@@ -4,7 +4,7 @@
 <head>
   <script>
     (function () {
-      var saved = localStorage.getItem('tapdid_theme') || 'light';
+      var saved = sessionStorage.getItem('tapdid_theme') || 'light';
       document.documentElement.setAttribute('data-theme', saved);
     })();
   </script>

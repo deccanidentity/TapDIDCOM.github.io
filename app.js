@@ -97,7 +97,7 @@ function initMobileNav() {
    ========================================================================== */
 function initThemeToggle() {
   const themeBtn = document.getElementById('themeToggle');
-  const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('tapdid_theme') || 'light';
+  const currentTheme = document.documentElement.getAttribute('data-theme') || sessionStorage.getItem('tapdid_theme') || 'light';
 
   updateThemeIcon(currentTheme);
 
@@ -107,6 +107,7 @@ function initThemeToggle() {
     const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
+    sessionStorage.setItem('tapdid_theme', newTheme);
     localStorage.setItem('tapdid_theme', newTheme);
     updateThemeIcon(newTheme);
   });
