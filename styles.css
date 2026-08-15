@@ -372,6 +372,83 @@ h6 {
   flex-shrink: 0;
 }
 
+.btn-portal-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.48rem 1.05rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.015em;
+  color: var(--text-main);
+  background: rgba(0, 82, 255, 0.04);
+  border: 1.5px solid rgba(0, 82, 255, 0.22);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0, 82, 255, 0.04);
+  cursor: pointer;
+}
+
+.btn-portal-login:hover {
+  background: rgba(0, 82, 255, 0.09);
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 82, 255, 0.22);
+}
+
+.btn-portal-login .portal-icon {
+  flex-shrink: 0;
+  color: var(--brand-blue);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-portal-login:hover .portal-icon {
+  transform: translateX(2px);
+  color: var(--brand-blue);
+}
+
+[data-theme="dark"] .btn-portal-login {
+  background: rgba(0, 242, 254, 0.05);
+  border-color: rgba(0, 242, 254, 0.22);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .btn-portal-login:hover {
+  background: rgba(0, 242, 254, 0.12);
+  border-color: var(--brand-cyan);
+  color: var(--brand-cyan);
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+}
+
+[data-theme="dark"] .btn-portal-login .portal-icon {
+  color: var(--brand-cyan);
+}
+
+[data-theme="dark"] .btn-portal-login:hover .portal-icon {
+  color: var(--brand-cyan);
+}
+
+.mobile-portal-item {
+  display: none;
+}
+
+.nav-link-portal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.nav-link-portal:hover {
+  color: var(--accent-cyan);
+}
+
 .theme-toggle-btn {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -2094,6 +2171,11 @@ h6 {
     display: none !important;
   }
 
+  .mobile-portal-item {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
   .nav-links {
     display: flex;
     flex-direction: column;
@@ -2432,6 +2514,18 @@ h6 {
   .theme-toggle-btn {
     width: 36px;
     height: 36px;
+  }
+
+  .btn-portal-login {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .btn-portal-login span {
+    display: none;
   }
 
   .nfc-card-3d {
