@@ -4,8 +4,12 @@
 <head>
   <script>
     (function () {
-      var saved = sessionStorage.getItem('tapdid_theme') || 'light';
-      document.documentElement.setAttribute('data-theme', saved);
+      try {
+        var saved = sessionStorage.getItem('tapdid_theme') || 'light';
+        document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
     })();
   </script>
   <meta charset="UTF-8">
@@ -347,7 +351,7 @@
                   <span style="font-size: 0.72rem; color: var(--accent-cyan); font-weight: 700;">NFC + QR</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://www.tapdid.com"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR or Tap NFC for Review</div>
@@ -406,7 +410,7 @@
                   <span style="font-size: 0.72rem; color: #25D366; font-weight: 700;">WHATSAPP LINK</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/918186035869"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://wa.me/918186035869"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR to Chat on WhatsApp</div>
@@ -465,7 +469,7 @@
                   <span style="font-size: 0.72rem; color: #ffd700; font-weight: 700;">VCF PROFILE</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://www.tapdid.com"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR to Save VCF Contact</div>
@@ -525,7 +529,7 @@
                   <span style="font-size: 0.72rem; color: #00f2fe; font-weight: 700;">EMPLOYEE VERIFIED</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://www.tapdid.com"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan to Verify Identity &amp; Access
@@ -586,7 +590,7 @@
                   <span style="font-size: 0.72rem; color: #0052ff; font-weight: 700;">UPI QR INTEGRATED</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=sales@upi"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=upi://pay?pa=sales@upi"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan UPI QR to Pay Directly</div>
@@ -646,7 +650,7 @@
                   <span style="font-size: 0.72rem; color: #ff9900; font-weight: 700;">INVENTORY LOG</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://www.tapdid.com"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan for Service Logs &amp; Warranty
@@ -706,7 +710,7 @@
                   <span style="font-size: 0.72rem; color: #9933ff; font-weight: 700;">CAMPUS VERIFIED</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://www.tapdid.com"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan for Library &amp; Canteen Pass
@@ -766,7 +770,7 @@
                   <span style="font-size: 0.72rem; color: #ff2d55; font-weight: 700;">EMERGENCY DATA</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=tel:+919000035869"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=tel:+919000035869"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan QR for Medical Notes &amp;
@@ -825,7 +829,7 @@
                   <span style="font-size: 0.72rem; color: #00a86b; font-weight: 700;">3D TOUR TOUR</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://www.tapdid.com"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan to View Floor Plans &amp;
@@ -886,7 +890,7 @@
                   <span style="font-size: 0.72rem; color: #00f2fe; font-weight: 700;">VIP DELEGATE</span>
                 </div>
                 <div style="background: #ffffff; padding: 0.35rem; border-radius: 8px; margin: 0.3rem 0;">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tapdid.com"
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&ecc=H&color=000000&bgcolor=ffffff&data=https://www.tapdid.com"
                     alt="QR Code" style="width: 70px; height: 70px; display: block; border-radius: 4px;">
                 </div>
                 <div style="font-size: 0.76rem; color: #ffffff; font-weight: 600;">Scan at Entrance &amp; VIP Lounge

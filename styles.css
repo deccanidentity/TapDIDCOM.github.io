@@ -81,7 +81,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -172,7 +172,7 @@ h6 {
 }
 
 .section-title {
-  font-size: 2.35rem;
+  font-size: 2.05rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.85rem;
   color: var(--text-main);
@@ -180,7 +180,7 @@ h6 {
 
 .section-subtitle {
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 0.94rem;
   font-weight: 500;
 }
 
@@ -194,7 +194,7 @@ h6 {
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
   font-weight: 750;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
   letter-spacing: 0.015em;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -539,7 +539,7 @@ h6 {
 }
 
 .hero-content h1 {
-  font-size: 3.4rem;
+  font-size: 2.7rem;
   line-height: 1.12;
   letter-spacing: -0.03em;
   margin-bottom: 1.25rem;
@@ -548,7 +548,7 @@ h6 {
 
 .hero-content p {
   color: var(--text-muted);
-  font-size: 1.12rem;
+  font-size: 0.96rem;
   font-weight: 500;
   margin-bottom: 1.8rem;
   max-width: 520px;
@@ -1518,6 +1518,9 @@ h6 {
 }
 
 @media (max-width: 640px) {
+  .btn-portal-login {
+    display: none !important;
+  }
   .demo-form-vertical .form-row {
     flex-direction: column;
     gap: 1rem;
@@ -2311,7 +2314,7 @@ h6 {
   .section-subtitle,
   .hero-content p,
   .footer-brand p {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.6;
   }
 
@@ -2360,7 +2363,7 @@ h6 {
   }
 
   .nav-link {
-    font-size: 1.05rem;
+    font-size: 0.94rem;
   }
 
   .footer-links a {
@@ -2374,7 +2377,7 @@ h6 {
   }
 
   .section-title {
-    font-size: 1.85rem;
+    font-size: 1.55rem;
   }
 
   /* Mobile 3D NFC Card Preview Optimizations */
@@ -2430,7 +2433,7 @@ h6 {
   }
 
   .pricing-price {
-    font-size: 1.85rem;
+    font-size: 1.6rem;
   }
 
   .pricing-features li {
@@ -2478,7 +2481,7 @@ h6 {
   }
 
   .hero-content h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
 
   .roi-stats-grid {
@@ -3286,4 +3289,9 @@ h6 {
   gap: 0.65rem;
   margin-top: auto;
   padding-top: 0.75rem;
+}
+@media (max-width: 768px) {
+  .header .btn-portal-login {
+    display: none !important;
+  }
 }

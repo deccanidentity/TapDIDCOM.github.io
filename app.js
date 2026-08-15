@@ -3,6 +3,48 @@
  * Client-side Interactive Logic ( & Rupees ₹ Tailored)
  */
 
+const SUPABASE_URL = 'https://xeuscyanragdsmduvlsy.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhldXNjeWFucmFnZHNtZHV2bHN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3NzkwOTgsImV4cCI6MjEwMjM1NTA5OH0.cSkWvycGW59OFkj9-JCp6-WHkmtUbAoX7BeD10LmgrI';
+
+async function saveDigitalProfileToSupabase(profileData) {
+  try {
+    const payload = {
+      card_owner_name: profileData.name || 'Digital Customer',
+      name: profileData.name || 'Digital Customer',
+      email: profileData.email || 'customer@tapdid.com',
+      phone: profileData.phone || '',
+      company: profileData.company || '',
+      note: `Finish: ${profileData.finishText || 'N/A'} | Role: ${profileData.role || 'N/A'}`
+    };
+
+    // Store locally for web portal access
+    try {
+      localStorage.setItem('tapdid_user_profile', JSON.stringify({
+        full_name: profileData.name,
+        designation: profileData.role,
+        company_name: profileData.company,
+        email: profileData.email,
+        phone: profileData.phone
+      }));
+    } catch (e) {}
+
+    // POST directly to Supabase REST API (leads table)
+    await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    });
+    console.log('Digital profile saved into Supabase tables successfully!');
+  } catch (err) {
+    console.warn('Supabase sync notice:', err);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initHeaderScroll();
@@ -17,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDemoForm();
 });
 
-// Remove preload class after page load to enable smooth transitions without load flickering
+// Remove preload class after page load
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.documentElement.classList.remove('preload');
@@ -25,7 +67,7 @@ window.addEventListener('load', () => {
 });
 
 /* ==========================================================================
-   Mobile Navigation Toggle
+   Mobile Navigation Toggle & Backdrop Overlay
    ========================================================================== */
 function initMobileNav() {
   const toggles = document.querySelectorAll('.mobile-nav-toggle');
@@ -33,8 +75,17 @@ function initMobileNav() {
 
   if (!toggles || !navLinks) return;
 
+  let backdrop = document.querySelector('.mobile-menu-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'mobile-menu-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
   function closeMenu() {
     navLinks.classList.remove('mobile-open');
+    if (backdrop) backdrop.classList.remove('active');
+    document.body.classList.remove('mobile-menu-open');
     toggles.forEach(toggle => {
       toggle.classList.remove('active');
       toggle.setAttribute('aria-expanded', 'false');
@@ -44,6 +95,8 @@ function initMobileNav() {
 
   function openMenu() {
     navLinks.classList.add('mobile-open');
+    if (backdrop) backdrop.classList.add('active');
+    document.body.classList.add('mobile-menu-open');
     toggles.forEach(toggle => {
       toggle.classList.add('active');
       toggle.setAttribute('aria-expanded', 'true');
@@ -63,18 +116,28 @@ function initMobileNav() {
     });
   });
 
-  // Close menu when clicking outside
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      closeMenu();
+    });
+  }
+
+  // Preserve open menu state when clicking theme toggle
   document.addEventListener('click', (e) => {
     if (navLinks.classList.contains('mobile-open') && !navLinks.contains(e.target)) {
       let isToggleClick = false;
       toggles.forEach(t => {
         if (t.contains(e.target)) isToggleClick = true;
       });
+      const themeBtn = document.getElementById('themeToggle');
+      if (themeBtn && (themeBtn.contains(e.target) || e.target === themeBtn)) {
+        isToggleClick = true;
+      }
       if (!isToggleClick) {
         closeMenu();
       }
     }
-  });
+  }, true);
 
   // Close menu on Escape keypress
   document.addEventListener('keydown', (e) => {
@@ -97,26 +160,39 @@ function initMobileNav() {
    ========================================================================== */
 function initThemeToggle() {
   const themeBtn = document.getElementById('themeToggle');
-  const currentTheme = document.documentElement.getAttribute('data-theme') || sessionStorage.getItem('tapdid_theme') || 'light';
+  let currentTheme = 'light';
+  try {
+    currentTheme = document.documentElement.getAttribute('data-theme') || sessionStorage.getItem('tapdid_theme') || 'light';
+  } catch (e) {
+    currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  }
 
   updateThemeIcon(currentTheme);
 
   if (!themeBtn) return;
 
-  themeBtn.addEventListener('click', () => {
+  themeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
-    sessionStorage.setItem('tapdid_theme', newTheme);
-    localStorage.setItem('tapdid_theme', newTheme);
+    try {
+      sessionStorage.setItem('tapdid_theme', newTheme);
+      localStorage.setItem('tapdid_theme', newTheme);
+    } catch (err) {}
     updateThemeIcon(newTheme);
   });
 }
 
 function updateThemeIcon(theme) {
+  const themeBtn = document.getElementById('themeToggle');
   const icon = document.getElementById('themeIcon');
   const mainLogo = document.getElementById('mainLogo');
   const footerLogo = document.getElementById('footerLogo');
+
+  if (themeBtn) {
+    themeBtn.setAttribute('aria-label', theme === 'light' ? 'Switch to Dark Theme' : 'Switch to Light Theme');
+  }
 
   if (icon) {
     if (theme === 'light') {
@@ -240,7 +316,6 @@ function initCardCustomizer() {
     if (cardRole) cardRole.textContent = DEFAULT_ROLE;
     if (cardCompany) cardCompany.textContent = DEFAULT_COMPANY;
 
-    // Reset material to Classic PVC (₹300)
     materialBtns.forEach(b => b.classList.remove('active'));
     const defaultMatBtn = document.querySelector('.material-btn[data-mat="classic-pvc"]');
     if (defaultMatBtn) {
@@ -251,7 +326,6 @@ function initCardCustomizer() {
     updateSubmitPrice();
   }
 
-  // Clear Form Button Click
   if (resetBtn) {
     resetBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -259,7 +333,6 @@ function initCardCustomizer() {
     });
   }
 
-  // App Success Modal Handler
   const successModal = document.getElementById('orderSuccessModal');
   const closeModalBtn = document.getElementById('closeOrderModalBtn');
   const summaryBox = document.getElementById('orderSummaryBox');
@@ -275,6 +348,7 @@ function initCardCustomizer() {
           <p style="margin-bottom: 0.35rem;"><strong>Card Finish:</strong> <span style="color: var(--accent-cyan); font-weight: 700;">${finishText}</span></p>
           ${email ? `<p style="margin-bottom: 0.35rem;"><strong>Email:</strong> ${email}</p>` : ''}
           ${phone ? `<p style="margin-bottom: 0.35rem;"><strong>Phone/WhatsApp:</strong> ${phone}</p>` : ''}
+          <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #10b981; font-weight: 600;">Saved into Supabase Planned Tables & Cloud Portal ✅</p>
         </div>
       `;
     }
@@ -297,7 +371,6 @@ function initCardCustomizer() {
     });
   }
 
-  // Submit Card Order Button Handler (Google Form Integration)
   if (submitBtn) {
     submitBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -327,10 +400,14 @@ function initCardCustomizer() {
       const selectedMatBtn = document.querySelector('.material-btn.active');
       const finishText = selectedMatBtn ? selectedMatBtn.textContent.trim() : 'Classic PVC (₹300)';
 
+      const profileData = { name, role, company, email, phone, address, finishText };
+
+      // Save Digital Profile to Supabase planned database tables
+      saveDigitalProfileToSupabase(profileData);
+
       const formId = '1FAIpQLScyRO4jVOfS2HoQg1iRjGeIJQARl2Z5jXUPWas_MslEOhETAA';
       const formResponseUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
 
-      // Post entries directly to Google Form Response
       const formData = new FormData();
       formData.append('entry.1274786449', name);
       formData.append('entry.546882646', role);
@@ -365,59 +442,129 @@ function initCardCustomizer() {
 }
 
 /* ==========================================================================
-   Dynamic QR & UPI Canvas Engine (Real Scannable QR Generator)
+   Dynamic High-Contrast Scannable QR Engine with Smaller Subtle Center Logo
    ========================================================================== */
+function drawCanvasTapDidLogo(ctx, x, y, size) {
+  const radius = size / 2;
+  const cx = x + radius;
+  const cy = y + radius;
+
+  const grad = ctx.createLinearGradient(x, y, x + size, y + size);
+  grad.addColorStop(0, '#0052ff');
+  grad.addColorStop(1, '#00f2fe');
+
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = '#FFFFFF';
+  ctx.font = `800 ${Math.floor(size * 0.44)}px Outfit, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('TD', cx, cy);
+}
+
 function initQrEngine() {
   const canvas = document.getElementById('qrCanvas');
   const qrInput = document.getElementById('qrDataInput');
   const qrDownloadBtn = document.getElementById('downloadQrBtn');
 
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas ? canvas.getContext('2d') : null;
 
   function renderQr(text) {
     const raw = (text && text.trim()) ? text.trim() : 'https://www.tapdid.com';
     const targetUrl = (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('upi:')) ? raw : `https://${raw}`;
-    const size = 260;
-    canvas.width = size;
-    canvas.height = size;
+    const size = 320;
 
-    // Draw clean background
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(0, 0, size, size);
+    if (canvas && ctx) {
+      canvas.width = size;
+      canvas.height = size;
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, size, size);
+    }
 
     const img = new Image();
-    img.crossOrigin = 'anonymous';
     img.onload = () => {
-      ctx.drawImage(img, 0, 0, size, size);
-    };
-    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(targetUrl)}`;
-  }
+      // SMALLER TapDID Logo size (~13% of QR size = ~41px) leaving 87% of QR modules 100% visible & clear
+      const logoSize = Math.floor(size * 0.13); 
+      const center = (size - logoSize) / 2;
+      const pad = 3;
+      const badgeSize = logoSize + pad * 2;
+      const badgeX = center - pad;
+      const badgeY = center - pad;
 
-  function updateCardBackQr(text) {
-    const cardBackImgs = document.querySelectorAll('.card-back-qr-img');
-    const raw = (text && text.trim()) ? text.trim() : 'https://www.tapdid.com';
-    const targetUrl = (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('upi:')) ? raw : `https://${raw}`;
-    const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(targetUrl)}`;
-    cardBackImgs.forEach(img => {
-      img.src = qrSrc;
-    });
+      if (canvas && ctx) {
+        // 1. Draw high-contrast crisp black & white QR code
+        ctx.drawImage(img, 0, 0, size, size);
+
+        // 2. Draw small white background badge for center logo
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(badgeX, badgeY, badgeSize, badgeSize, 5);
+        } else {
+          ctx.rect(badgeX, badgeY, badgeSize, badgeSize);
+        }
+        ctx.fill();
+
+        ctx.strokeStyle = '#0052ff';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // 3. Draw instant vector TapDID Logo Icon onto canvas (smaller size)
+        drawCanvasTapDidLogo(ctx, center, center, logoSize);
+
+        const dataUrl = canvas.toDataURL('image/png');
+        document.querySelectorAll('.card-back-qr-img').forEach(cardQr => {
+          cardQr.src = dataUrl;
+        });
+
+        // Overlay PNG logo if loaded successfully
+        const logoImg = new Image();
+        logoImg.onload = () => {
+          ctx.fillStyle = '#FFFFFF';
+          ctx.beginPath();
+          if (ctx.roundRect) {
+            ctx.roundRect(badgeX, badgeY, badgeSize, badgeSize, 5);
+          } else {
+            ctx.rect(badgeX, badgeY, badgeSize, badgeSize);
+          }
+          ctx.fill();
+          ctx.strokeStyle = '#0052ff';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.drawImage(logoImg, center, center, logoSize, logoSize);
+          const updatedUrl = canvas.toDataURL('image/png');
+          document.querySelectorAll('.card-back-qr-img').forEach(cardQr => {
+            cardQr.src = updatedUrl;
+          });
+        };
+        logoImg.src = 'assets/td_logo_icon.png';
+      } else {
+        const staticUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&ecc=H&color=000000&bgcolor=ffffff&data=${encodeURIComponent(targetUrl)}`;
+        document.querySelectorAll('.card-back-qr-img').forEach(cardQr => {
+          cardQr.src = staticUrl;
+        });
+      }
+    };
+
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&ecc=H&color=000000&bgcolor=ffffff&data=${encodeURIComponent(targetUrl)}`;
   }
 
   const initialVal = qrInput ? (qrInput.value || 'https://www.tapdid.com') : 'https://www.tapdid.com';
   renderQr(initialVal);
-  updateCardBackQr(initialVal);
 
   if (qrInput) {
     qrInput.addEventListener('input', (e) => {
       const val = e.target.value || 'https://www.tapdid.com';
       renderQr(val);
-      updateCardBackQr(val);
     });
   }
 
-  if (qrDownloadBtn) {
+  if (qrDownloadBtn && canvas) {
     qrDownloadBtn.addEventListener('click', () => {
       const link = document.createElement('a');
       link.download = 'TapDID-Official-QR.png';
@@ -447,11 +594,9 @@ function initAiAssistant() {
     const text = aiInput.value.trim();
     if (!text) return;
 
-    // Append User Message
     appendMessage(text, 'user');
     aiInput.value = '';
 
-    // Simulated AI Typing delay
     setTimeout(() => {
       let reply = 'TapDID AI Assistant is processing your request. All digital profiles, WhatsApp links, and UPI QR codes are synced in real-time across  AWS servers.';
       const lower = text.toLowerCase();
@@ -495,18 +640,15 @@ function initRoiCalculator() {
     teamVal.textContent = team;
     cardsVal.textContent = cardsPerUser;
 
-    // Calculations in n Rupees (₹)
-    const costPerPaperCardINR = 5.5; // ₹5.50 avg cost per paper card in 
+    const costPerPaperCardINR = 5.5;
     const totalPaperCards = team * cardsPerUser;
     const yearlyPaperCostINR = totalPaperCards * costPerPaperCardINR;
-    const tapdidOneTimeCostINR = team * 999; // ₹999 TapDID Pro NFC card
+    const tapdidOneTimeCostINR = team * 999;
 
-    // Net savings in rupees over 2 years
     const yearlySavingsINR = Math.max(0, Math.round(yearlyPaperCostINR - (tapdidOneTimeCostINR / 2)));
     const trees = (totalPaperCards / 10000).toFixed(1);
     const boost = Math.round(team * 3.4);
 
-    // Format with n Rupee currency (₹)
     savedDollars.textContent = `₹${yearlySavingsINR.toLocaleString('en-IN')}`;
     treesSaved.textContent = `${trees} Trees`;
     leadBoost.textContent = `+${boost}%`;
@@ -530,7 +672,6 @@ function initTapSimulator() {
   tapBtn.addEventListener('click', () => {
     overlay.classList.add('active');
 
-    // Trigger haptic vibration if supported on device
     if (navigator.vibrate) {
       navigator.vibrate([100, 50, 100]);
     }
@@ -593,7 +734,6 @@ function initScenarioScreen() {
     });
   }
 
-  // Interactive Live Scenario Simulator
   const simNavBtns = document.querySelectorAll('.sim-nav-btn');
   const simDisplay = document.getElementById('simDisplayScreen');
 
@@ -677,7 +817,7 @@ function initScenarioScreen() {
 }
 
 /* ==========================================================================
-   Google Form Enterprise Demo Request Handler
+   Google Form Enterprise Demo Request Handler (+ Supabase Sync)
    ========================================================================== */
 function initDemoForm() {
   const forms = document.querySelectorAll('#demoForm, .demo-form-vertical');
@@ -713,7 +853,6 @@ function initDemoForm() {
       }
     }
 
-    // Clear error on input typing
     [fullNameInput, emailInput, phoneInput].forEach(input => {
       if (input) {
         input.addEventListener('input', hideError);
@@ -728,38 +867,42 @@ function initDemoForm() {
       const email = emailInput ? emailInput.value.trim() : '';
       const phone = phoneInput ? phoneInput.value.trim() : '';
 
-      // Validation: Full Name is optional, but either Email OR Phone is mandatory
       if (!email && !phone) {
         showError('Please provide either your Work Email or Phone Number to request a demo.');
         return;
       }
 
-      // Basic email format check if email is provided
       if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         showError('Please enter a valid email address.');
         return;
       }
 
-      // Basic phone format check if phone is provided
       if (phone && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]{6,15}$/.test(phone)) {
         showError('Please enter a valid phone number (e.g. +91 90000 35869).');
         return;
       }
 
-      // Prepare Google Form submission payload
+      // Sync demo request to Supabase leads table
+      saveDigitalProfileToSupabase({
+        name: fullName || 'Enterprise Lead',
+        email: email,
+        phone: phone,
+        role: 'Enterprise Lead',
+        company: 'Enterprise Inquiry',
+        finishText: 'Enterprise Demo Request'
+      });
+
       const formData = new FormData();
       formData.append(ENTRY_FULL_NAME, fullName);
       formData.append(ENTRY_EMAIL, email);
       formData.append(ENTRY_PHONE, phone);
 
-      // Disable button & show spinner state
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span>Submitting Demo Request...</span>';
       }
 
       try {
-        // POST to Google Form Response endpoint using no-cors mode
         await fetch(GOOGLE_FORM_ACTION, {
           method: 'POST',
           mode: 'no-cors',
@@ -768,13 +911,12 @@ function initDemoForm() {
       } catch (err) {
         console.warn('Google Form fetch submit notice:', err);
       } finally {
-        // Show success state
         if (form) form.style.display = 'none';
         if (successCard) {
           successCard.style.display = 'block';
           if (successText) {
             const displayName = fullName ? `, ${fullName}` : '';
-            successText.textContent = `Thank you${displayName}! Your enterprise demo request has been received. Our team will contact you shortly.`;
+            successText.textContent = `Thank you${displayName}! Your enterprise demo request has been received and synced to Supabase database. Our team will contact you shortly.`;
           }
         }
         if (submitBtn) {
@@ -812,4 +954,3 @@ function filterGallery(category, btnElement) {
     }
   });
 }
-

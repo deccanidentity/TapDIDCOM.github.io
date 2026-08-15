@@ -4,8 +4,12 @@
 <head>
   <script>
     (function () {
-      var saved = sessionStorage.getItem('tapdid_theme') || 'light';
-      document.documentElement.setAttribute('data-theme', saved);
+      try {
+        var saved = sessionStorage.getItem('tapdid_theme') || 'light';
+        document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
     })();
   </script>
   <meta charset="UTF-8">
